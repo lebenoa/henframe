@@ -32,6 +32,11 @@
         width: 100%;
     }
 
+    img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
     @media (max-width: 500px) {
         img {
             width: 100%;
