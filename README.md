@@ -29,7 +29,7 @@ Like for example: [hifumin which use the same API](https://hifumin.app) is... ju
 And what's more is that search is **KIND OF** harder to use compare to the [`nhentai`](https://nhentai.net) itself
 
 That's mainly why I have done this
-- English only by default; Might implement something to disable this AS OPTION in the future.
+- English **ONLY** by default; Might implement something to disable this AS AN OPTION in the future.
 - Search by tag(or at least I think so), seperated by comma (`,`); Like how you would prompt SD Anime Model.
     > `milf, full color` will search for `milf`, `full color` and `english`
 
