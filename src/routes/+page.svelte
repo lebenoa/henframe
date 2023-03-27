@@ -4,17 +4,6 @@
 	export let data: PageData;
 
 	import Card from '$lib/components/card.svelte';
-	import { page } from '$app/stores';
-
-	// @ts-ignore
-	$: currentPage = parseInt($page.url.pathname.split('/').pop());
-
-	$: previousPage = currentPage == 1 ? 1 : currentPage - 1;
-	$: nextPage = data.result.success
-		? currentPage == Math.floor(data.result.total / 25) + 1
-			? currentPage
-			: currentPage + 1
-		: currentPage + 1;
 </script>
 
 <svelte:head>
@@ -33,10 +22,6 @@
 		/>
 	{/each}
 </div>
-<div class="container">
-	<a href="/search/{$page.params.term}/{previousPage}">Previous Page</a>
-	<a href="/search/{$page.params.term}/{nextPage}">Next Page</a>
-</div>
 
 <style>
 	.container {
@@ -45,18 +30,5 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: center;
-	}
-
-	a {
-		padding: 1rem;
-		border: 1px solid red;
-		margin: auto;
-		transition: 0.3s;
-	}
-
-	a:hover {
-		background: red;
-		color: white;
-		text-decoration: none;
 	}
 </style>
