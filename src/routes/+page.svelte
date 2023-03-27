@@ -1,0 +1,62 @@
+<script lang="ts">
+	import type { PageData } from './$types';
+
+	export let data: PageData;
+
+	import Card from '$lib/components/card.svelte';
+	import { page } from '$app/stores';
+
+	// @ts-ignore
+	$: currentPage = parseInt($page.url.pathname.split('/').pop());
+
+	$: previousPage = currentPage == 1 ? 1 : currentPage - 1;
+	$: nextPage = data.result.success
+		? currentPage == Math.floor(data.result.total / 25) + 1
+			? currentPage
+			: currentPage + 1
+		: currentPage + 1;
+</script>
+
+<svelte:head>
+	<title>Home</title>
+	<meta name="description" content="Chicked Frame as opposed to War Frame KEKW" />
+</svelte:head>
+
+<div class="container">
+	{#each data.result.data as res}
+		<Card
+			id={res.id}
+			title={res.title.display}
+			width={res.images.cover.info.width}
+			height={res.images.cover.info.height}
+			link={res.images.cover.link}
+		/>
+	{/each}
+</div>
+<div class="container">
+	<a href="/search/{$page.params.term}/{previousPage}">Previous Page</a>
+	<a href="/search/{$page.params.term}/{nextPage}">Next Page</a>
+</div>
+
+<style>
+	.container {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	a {
+		padding: 1rem;
+		border: 1px solid red;
+		margin: auto;
+		transition: 0.3s;
+	}
+
+	a:hover {
+		background: red;
+		color: white;
+		text-decoration: none;
+	}
+</style>

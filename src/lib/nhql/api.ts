@@ -1,0 +1,1 @@
+export const API_ENDPOINT = 'https://api.hifumin.app/v1/graphql';
