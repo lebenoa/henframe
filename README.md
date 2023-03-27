@@ -3,14 +3,6 @@ Or I would like to called "Chick(en) Frame" KEKW
 
 ---
 
-PC
-> ![image](https://user-images.githubusercontent.com/76484203/228002396-e06f3a84-dce4-40ec-b4b9-fdf458e133bd.png)
-
-Mobile
-> ![localhost_5173_view_433390 (2)](https://user-images.githubusercontent.com/76484203/228002564-97a6a83b-a13c-4a0c-ba7b-a196be9bb49b.png)
-
----
-
 Here's the serious explanation; well let's talk about the things I don't like about [`nhentai`](https://nhentai.net) first.
 
 1. **Interactive page changing**:
@@ -18,9 +10,17 @@ Here's the serious explanation; well let's talk about the things I don't like ab
 2. **Ads**
     > I know there is a maintenance cost on everything that exists in this world.. or at least for the server that running the web apps.. but come on, you gotta let me scroll reading if you're doing this.
 
+Luckily I found the [API for this](https://api.hifumin.app) [(source)](https://github.com/SaltyAom/seele) so I don't have to do it myself!
+
 ---
 
-Luckily I found the [API for this](https://api.hifumin.app) [(source)](https://github.com/SaltyAom/seele) so I don't have to do it myself!
+PC
+> ![image](https://user-images.githubusercontent.com/76484203/228002396-e06f3a84-dce4-40ec-b4b9-fdf458e133bd.png)
+
+Mobile
+> ![localhost_5173_view_433390 (2)](https://user-images.githubusercontent.com/76484203/228002564-97a6a83b-a13c-4a0c-ba7b-a196be9bb49b.png)
+
+---
 
 # Why / What's this for?
 
