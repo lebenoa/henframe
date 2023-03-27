@@ -45,4 +45,4 @@ That's mainly why I have done this
 1. Clone this repository. Extract it to somewhere
 1. Navigate to root folder (where `package.json` located)
 1. run `npm i`
-1. run `npm run dev` to run in dev mode. Check out SvelteKit guide to deploy to production.
+1. run `npm run dev` to run in dev mode. Check out [SvelteKit guide to deploy to production](https://kit.svelte.dev/docs/adapters).
