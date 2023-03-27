@@ -10,7 +10,7 @@ Here's the serious explanation; well let's talk about the things I don't like ab
 2. **Ads**
     > I know there is a maintenance cost on everything that exists in this world.. or at least for the server that running the web apps.. but come on, you gotta let me scroll reading if you're doing this.
 
-Luckily I found the [API for this](https://api.hifumin.app) [(source)](https://github.com/SaltyAom/seele) so I don't have to do it myself!
+Luckily I found the [API for this](https://api.hifumin.app) [`(source)`](https://github.com/SaltyAom/seele) so I don't have to do it myself!
 
 ---
 
