@@ -9,7 +9,9 @@
 </script>
 
 <svelte:head>
-    <title>{result.success ? result.data.title.display : "Error"}</title>
+    {#if result.success}
+        <title>{result.data.title.display}</title>
+    {/if}
 </svelte:head>
 
 {#if result.success}

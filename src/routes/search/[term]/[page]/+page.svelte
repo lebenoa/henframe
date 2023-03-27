@@ -17,6 +17,12 @@
 		: currentPage + 1;
 </script>
 
+<svelte:head>
+	{#if data.result.success && $page.params.term}
+		<title>{$page.params.term.toUpperCase()} | Search</title>
+	{/if}
+</svelte:head>
+
 {#if data.result.success}
 	<h1>Found {data.result.total} items</h1>
 	<div class="container">
