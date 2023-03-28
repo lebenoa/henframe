@@ -3,11 +3,12 @@
 
 	export let data: PageData;
 
+	$: ({ result } = data);
+
 	import Card from '$lib/components/card.svelte';
 	import { page } from '$app/stores';
 
-	// @ts-ignore
-	$: currentPage = parseInt($page.url.pathname.split('/').pop());
+	$: currentPage = parseInt($page.params.page);
 
 	$: previousPage = currentPage == 1 ? 1 : currentPage - 1;
 	$: nextPage = data.result.success
@@ -18,15 +19,15 @@
 </script>
 
 <svelte:head>
-	{#if data.result.success && $page.params.term}
+	{#if result.success && $page.params.term}
 		<title>{$page.params.term.toUpperCase()} | Search</title>
 	{/if}
 </svelte:head>
 
-{#if data.result.success}
-	<h1>Found {data.result.total} items</h1>
+{#if result.success}
+	<h1>Found {result.total} items</h1>
 	<div class="container">
-		{#each data.result.data as res}
+		{#each result.data as res}
 			<Card
 				id={res.id}
 				title={res.title.display}

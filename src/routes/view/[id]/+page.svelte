@@ -3,8 +3,6 @@
 
 	export let data: PageData;
 
-    // SOMEHOW this give me an error... but it's working so...
-    // @ts-ignore
 	$: ({ result } = data);
 </script>
 
