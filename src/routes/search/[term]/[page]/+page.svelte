@@ -11,8 +11,8 @@
 	$: currentPage = parseInt($page.params.page);
 
 	$: previousPage = currentPage == 1 ? 1 : currentPage - 1;
-	$: nextPage = data.result.success
-		? currentPage == Math.floor(data.result.total / 25) + 1
+	$: nextPage = result.success
+		? currentPage == Math.floor(result.total / 25) + 1
 			? currentPage
 			: currentPage + 1
 		: currentPage + 1;
