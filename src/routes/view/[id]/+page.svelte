@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { PageData } from '../$types';
+    import type { PageData } from './$types';
 
 	export let data: PageData;
 
@@ -35,6 +35,8 @@
     img {
         max-width: 100%;
         max-height: 100%;
+        margin: 0;
+        padding: 0;
     }
 
     @media (max-width: 500px) {
