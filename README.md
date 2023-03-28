@@ -49,6 +49,8 @@ That's mainly why I have done this
 
 # Issues
 
-- image does not load correctly on subsequent browsing on iOS device (test on [BrowserStack](https://www.browserstack.com) iPhone 13 & my iPhone 11)  
+- images does not load correctly on subsequent browsing on iOS device (test on [BrowserStack](https://www.browserstack.com) iPhone 13 & my iPhone 11)  
     meaning even if you change the browser it's still not work and  
     **IT DOES WORK IF YOU WERE TO RELOAD THE PAGE** which confused me the most
+- images failed to load if there are too many images on the current page 
+     > (might be: too many request to [`nhentai`](https://nhentai.net) so they refused? lazy loading incoming?)
