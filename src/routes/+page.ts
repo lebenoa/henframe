@@ -7,28 +7,28 @@ export const load = (async ({ fetch }) => {
 		operationName: null,
 		variables: {},
 		query: `{
-                nhql {
-                    search(includes: ["english"]) {
-                        success
-                        total
-                        data {
-                            id
-                            title {
-                                display
-                            }
-                            images {
-                                cover {
-                                    link
-                                    info {
-                                        width
-                                        height
+                    nhql {
+                        search(includes: ["english"]) {
+                            success
+                            total
+                            data {
+                                id
+                                title {
+                                    display
+                                }
+                                images {
+                                    cover {
+                                        link
+                                        info {
+                                            width
+                                            height
+                                        }
                                     }
                                 }
                             }
-                        }
-                    } 
-                }
-            }`
+                        } 
+                    }
+                }`
 	};
 
 	let result = await fetch(API_ENDPOINT, {

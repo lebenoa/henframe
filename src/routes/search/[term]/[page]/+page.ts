@@ -6,6 +6,10 @@ import type { APISearchResponse } from '$lib/nhql/type';
 export const load = (async ({ params, fetch }) => {
 	if (!params.term) throw error(404, 'Not found');
 
+	if (params.term.length == 6 && /^\d+$/.test(params.term)) {
+		throw redirect(308, `/view/${params.term}`);
+	}
+
 	let term;
 	if (params.term.includes(',')) {
 		let termList = params.term.split(',');
@@ -16,8 +20,6 @@ export const load = (async ({ params, fetch }) => {
 		termList.push('english');
 
 		term = JSON.stringify(termList);
-	} else if (params.term.length == 6 && /^\d+$/.test(params.term)) {
-		throw redirect(308, `/view/${params.term}`);
 	} else {
 		term = `["${params.term}","english"]`;
 	}
@@ -31,28 +33,28 @@ export const load = (async ({ params, fetch }) => {
 		operationName: null,
 		variables: {},
 		query: `{
-                nhql {
-                    search(${argument}) {
-                        success
-                        total
-                        data {
-                            id
-                            title {
-                                display
-                            }
-                            images {
-                                cover {
-                                    link
-                                    info {
-                                        width
-                                        height
-                                    }
-                                }
-                            }
-                        }
-                    } 
-                }
-            }`
+					nhql {
+						search(${argument}) {
+							success
+							total
+							data {
+								id
+								title {
+									display
+								}
+								images {
+									cover {
+										link
+										info {
+											width
+											height
+										}
+									}
+								}
+							}
+						} 
+					}
+				}`
 	};
 
 	let result = await fetch(API_ENDPOINT, {
