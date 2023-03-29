@@ -3,6 +3,8 @@
 
 	export let data: PageData;
 
+    import { lazyLoad } from './lazyload';
+
 	$: ({ result } = data);
 </script>
 
@@ -16,10 +18,10 @@
     <div class="container">
         {#each result.data.images.pages as res}
             <img
-                src={res.link}
                 alt={res.link}
                 referrerpolicy="same-origin"
                 loading="lazy"
+                use:lazyLoad={res.link}
             />
         {/each}
     </div>
