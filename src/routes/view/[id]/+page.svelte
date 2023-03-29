@@ -20,7 +20,6 @@
             <img
                 alt={res.link}
                 referrerpolicy="same-origin"
-                loading="lazy"
                 use:lazyLoad={res.link}
             />
         {/each}
@@ -38,6 +37,8 @@
         max-height: 100%;
         margin: 0;
         padding: 0;
+        opacity: 0;
+        transition: all .3s;
     }
 
     @media (max-width: 500px) {
