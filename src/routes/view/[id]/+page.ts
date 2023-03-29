@@ -1,3 +1,6 @@
+export const ssr = true;
+export const csr = false;
+
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 import { API_ENDPOINT } from '$lib/nhql/api';
@@ -7,7 +10,7 @@ export const load = (async ({ params, fetch }) => {
 	if (!params.id) throw error(404, 'Not found');
 
 	if (!(params.id.length != 6) && !/^\d+$/.test(params.id)) {
-		throw error(404, 'Not found')
+		throw error(404, 'Not found');
 	}
 
 	let requestBody = {

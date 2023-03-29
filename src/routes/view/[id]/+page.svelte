@@ -19,6 +19,7 @@
                 src={res.link}
                 alt={res.link}
                 referrerpolicy="same-origin"
+                loading="lazy"
             />
         {/each}
     </div>
