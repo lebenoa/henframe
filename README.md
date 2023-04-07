@@ -47,7 +47,10 @@ That's mainly why I have done this
 1. Open a terminal and run `npm i`
 1. Run `npm run dev` to run in dev mode. Check out [SvelteKit guide to deploy to production](https://kit.svelte.dev/docs/adapters).
 
-# Issues (Checked means fixed)
+# Issues
+
+> - Checked means fixed
+> - Dash (`-`) means partially fixed
 
 - [-] (Partially) images does not load correctly on subsequent browsing on iOS device (test on [BrowserStack](https://www.browserstack.com) iPhone 13 & my iPhone 11)  
     > meaning even if you change the browser it's still not work and  
