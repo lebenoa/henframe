@@ -45,18 +45,30 @@
 		{#if currentPage != 1}
 			<a href="/search/{$page.params.term}/1">1</a>
 		{/if}
+
 		{#if previousPage > 2}
 			<div class="dot">&nbsp; - - - &nbsp;</div>
 		{/if}
+
 		{#if previousPage != 1}
 			<a href="/search/{$page.params.term}/{previousPage}">{previousPage}</a>
 		{/if}
+
 		<!-- svelte-ignore a11y-missing-attribute -->
 		<a class="active">{currentPage}</a>
-		<a href="/search/{$page.params.term}/{nextPage}">{nextPage}</a>
-		{#if lastPage - nextPage > 1}
-			<div class="dot">&nbsp; - - - &nbsp;</div>
-			<a href="/search/{$page.params.term}/{lastPage}">{lastPage}</a>
+
+		{#if lastPage != 1}
+			{#if lastPage - currentPage >= 1}
+				<a href="/search/{$page.params.term}/{nextPage}">{nextPage}</a>
+			{/if}
+
+			{#if lastPage - nextPage > 1}
+				<div class="dot">&nbsp; - - - &nbsp;</div>
+			{/if}
+
+			{#if lastPage - nextPage >= 1}
+				<a href="/search/{$page.params.term}/{lastPage}">{lastPage}</a>
+			{/if}
 		{/if}
 	</div>
 {/if}
