@@ -15,7 +15,7 @@
 		if (result.total % 25 == 0) {
 			lastPage = result.total / 25;
 		} else {
-			lastPage = Math.floor(result.total / 25 + 1) + 1;
+			lastPage = Math.floor(result.total / 25) + 1;
 		}
 	} else {
 		lastPage = 1;
