@@ -12,11 +12,8 @@
 
 	let lastPage: number;
 	$: if (result.success) {
-		if (result.total % 25 == 0) {
-			lastPage = result.total / 25;
-		} else {
-			lastPage = Math.floor(result.total / 25) + 1;
-		}
+		let totalPage = result.total / 25;
+		lastPage = Number.isInteger(totalPage) ? totalPage : Math.floor(totalPage) + 1;
 	} else {
 		lastPage = 1;
 	}
@@ -49,9 +46,7 @@
 			<a href="/search/{$page.params.term}/1">1</a>
 		{/if}
 		{#if previousPage > 2}
-			<div class="dot">
-				&nbsp; - - - &nbsp;
-			</div>
+			<div class="dot">&nbsp; - - - &nbsp;</div>
 		{/if}
 		{#if previousPage != 1}
 			<a href="/search/{$page.params.term}/{previousPage}">{previousPage}</a>
@@ -60,9 +55,7 @@
 		<a class="active">{currentPage}</a>
 		<a href="/search/{$page.params.term}/{nextPage}">{nextPage}</a>
 		{#if lastPage - nextPage > 1}
-			<div class="dot">
-				&nbsp; - - - &nbsp;
-			</div>
+			<div class="dot">&nbsp; - - - &nbsp;</div>
 			<a href="/search/{$page.params.term}/{lastPage}">{lastPage}</a>
 		{/if}
 	</div>
@@ -103,7 +96,6 @@
 			text-decoration: none;
 		}
 	}
-
 
 	.active {
 		background: red;
