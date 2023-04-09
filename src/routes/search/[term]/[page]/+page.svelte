@@ -10,12 +10,19 @@
 
 	$: currentPage = parseInt($page.params.page);
 
+	let lastPage: number;
+	$: if (result.success) {
+		if (result.total % 25 == 0) {
+			lastPage = result.total / 25;
+		} else {
+			lastPage = Math.floor(result.total / 25 + 1) + 1;
+		}
+	} else {
+		lastPage = 1;
+	}
+
 	$: previousPage = currentPage == 1 ? 1 : currentPage - 1;
-	$: nextPage = result.success
-		? currentPage == Math.floor(result.total / 25) + 1
-			? currentPage
-			: currentPage + 1
-		: currentPage + 1;
+	$: nextPage = currentPage == lastPage ? currentPage : currentPage + 1;
 </script>
 
 <svelte:head>
@@ -25,7 +32,7 @@
 </svelte:head>
 
 {#if result.success}
-	<h1>Found {result.total} items</h1>
+	<h1 title="Displaying 25 items per page">Found {result.total} items</h1>
 	<div class="container">
 		{#each result.data as res}
 			<Card
@@ -37,9 +44,27 @@
 			/>
 		{/each}
 	</div>
-	<div class="container">
-		<a href="/search/{$page.params.term}/{previousPage}">Previous Page</a>
-		<a href="/search/{$page.params.term}/{nextPage}">Next Page</a>
+	<div class="container btn-container">
+		{#if currentPage != 1}
+			<a href="/search/{$page.params.term}/1">1</a>
+		{/if}
+		{#if previousPage > 2}
+			<div class="dot">
+				&nbsp; - - - &nbsp;
+			</div>
+		{/if}
+		{#if previousPage != 1}
+			<a href="/search/{$page.params.term}/{previousPage}">{previousPage}</a>
+		{/if}
+		<!-- svelte-ignore a11y-missing-attribute -->
+		<a class="active">{currentPage}</a>
+		<a href="/search/{$page.params.term}/{nextPage}">{nextPage}</a>
+		{#if lastPage - nextPage > 1}
+			<div class="dot">
+				&nbsp; - - - &nbsp;
+			</div>
+			<a href="/search/{$page.params.term}/{lastPage}">{lastPage}</a>
+		{/if}
 	</div>
 {/if}
 
@@ -50,18 +75,44 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: center;
+		margin-bottom: 1rem;
 	}
 
-    a {
-        padding: 1rem;
-        border: 1px solid red;
-        margin: auto;
-        transition: .3s;
-    }
+	.btn-container {
+		margin-bottom: 2rem;
+	}
 
-    a:hover {
-        background: red;
-        color: white;
-        text-decoration: none;
-    }
+	a {
+		padding: 1rem;
+		border: 1px solid red;
+		transition: 0.3s;
+	}
+
+	@media (min-width: 768px) {
+		a:hover {
+			background: red;
+			color: white;
+			text-decoration: none;
+		}
+	}
+
+	@media (max-width: 768px) {
+		a:active {
+			background: red;
+			color: white;
+			text-decoration: none;
+		}
+	}
+
+
+	.active {
+		background: red;
+		color: white;
+		text-decoration: none;
+	}
+
+	.dot {
+		display: flex;
+		align-items: center;
+	}
 </style>
