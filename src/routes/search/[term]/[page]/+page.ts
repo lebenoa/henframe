@@ -4,7 +4,6 @@ export const csr = false;
 import { error, redirect } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 import { search } from '$lib/nhql/api';
-import type { APISearchResponse } from '$lib/nhql/type';
 
 export const load = (async ({ params, fetch }) => {
 	if (!params.term) throw error(404, 'Not found');
@@ -13,15 +12,15 @@ export const load = (async ({ params, fetch }) => {
 		throw redirect(308, `/view/${params.term}`);
 	}
 
-	let term;
+	let term: string[];
 	if (params.term.includes(',')) {
-		let termList = params.term.split(',');
-		for (let i = 0; i < termList.length; i++) {
-			termList[i] = termList[i].trim();
-		}
-		termList.push('english');
+		term = params.term.split(',');
 
-		term = termList;
+		for (let i = 0; i < term.length; i++) {
+			term[i] = term[i].trim();
+		}
+
+		term.push('english');
 	} else {
 		term = [params.term, 'english'];
 	}
