@@ -77,7 +77,7 @@
 		width: 33%;
 	}
 
-	@media (max-width: 500px) {
+	@media (max-width: 768px) {
 		#search-bar {
 			width: 60%;
 		}
@@ -123,8 +123,17 @@
 		color: white;
 	}
 
-	#search-button:hover {
-		background-color: green;
-		color: black;
+	@media (min-width: 768px) {
+		#search-button:hover {
+			background-color: green;
+			color: black;
+		}
+	}
+
+	@media (max-width: 768px) {
+		#search-button:active {
+			background-color: green;
+			color: black;
+		}
 	}
 </style>

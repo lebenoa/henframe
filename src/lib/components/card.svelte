@@ -9,7 +9,7 @@
 
 </script>
 
-<a href="/view/{id}" class="container" style="width: {width}px;" transition:fade>
+<a href="/view/{id}" class="container" style="width: {width}px;" transition:fade data-sveltekit-preload-data="off">
     <h2>{title}</h2>
     <img
         width={width}

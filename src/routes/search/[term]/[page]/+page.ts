@@ -1,6 +1,9 @@
+export const ssr = true;
+export const csr = false;
+
 import { error, redirect } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
-import { API_ENDPOINT } from '$lib/nhql/api';
+import { search } from '$lib/nhql/api';
 import type { APISearchResponse } from '$lib/nhql/type';
 
 export const load = (async ({ params, fetch }) => {
@@ -14,58 +17,23 @@ export const load = (async ({ params, fetch }) => {
 	if (params.term.includes(',')) {
 		let termList = params.term.split(',');
 		for (let i = 0; i < termList.length; i++) {
-			let term = termList[i];
-			termList[i] = term.trim();
+			termList[i] = termList[i].trim();
 		}
 		termList.push('english');
 
-		term = JSON.stringify(termList);
+		term = termList;
 	} else {
-		term = `["${params.term}","english"]`;
+		term = [params.term, 'english'];
 	}
 
-	let argument = `includes: ${term}`;
-	if (params.page) {
-		argument += `, page: ${params.page}`;
+	let pageNumber;
+	try {
+		pageNumber = parseInt(params.page);
+	} catch {
+		pageNumber = 1;
 	}
 
-	let requestBody = {
-		operationName: null,
-		variables: {},
-		query: `{
-					nhql {
-						search(${argument}) {
-							success
-							total
-							data {
-								id
-								title {
-									display
-								}
-								images {
-									cover {
-										link
-										info {
-											width
-											height
-										}
-									}
-								}
-							}
-						} 
-					}
-				}`
-	};
-
-	let result = await fetch(API_ENDPOINT, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(requestBody)
-	});
-
-	let jsonData: APISearchResponse = await result.json();
+	let jsonData = await search(term, pageNumber);
 
 	return {
 		result: jsonData.data.nhql.search
