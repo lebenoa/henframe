@@ -3,10 +3,10 @@ import type { APIByResponse, APISearchResponse } from './type';
 export const API_ENDPOINT = 'https://api.hifumin.app/v1/graphql';
 
 export async function getByID(id: number): Promise<APIByResponse> {
-	let requestBody = {
-		operationName: 'getByID',
-		variables: { id },
-		query: `
+    let requestBody = {
+        operationName: 'getByID',
+        variables: { id },
+        query: `
 			query getByID($id: Int!) {
 				nhql {
 					by(id: $id) {
@@ -42,24 +42,24 @@ export async function getByID(id: number): Promise<APIByResponse> {
 					} 
 				}
 			}`
-	};
+    };
 
-	let result = await fetch(API_ENDPOINT, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(requestBody)
-	});
+    let result = await fetch(API_ENDPOINT, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+    });
 
-	return result.json();
+    return result.json();
 }
 
 export async function search(inc: string[], pg: number): Promise<APISearchResponse> {
-	let requestBody = {
-		operationName: 'searchFor',
-		variables: { inc, pg },
-		query: `
+    let requestBody = {
+        operationName: 'searchFor',
+        variables: { inc, pg },
+        query: `
 			query searchFor($inc: [String]!, $pg: Int!) {
 				nhql {
 					search(includes: $inc, page: $pg) {
@@ -83,15 +83,15 @@ export async function search(inc: string[], pg: number): Promise<APISearchRespon
 					} 
 				}
 			}`
-	};
+    };
 
-	let result = await fetch(API_ENDPOINT, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(requestBody)
-	});
+    let result = await fetch(API_ENDPOINT, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+    });
 
-	return result.json();
+    return result.json();
 }

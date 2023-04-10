@@ -1,4 +1,5 @@
 # Henframe ([`nhentai`](https://nhentai.net) clone)
+
 Or I would like to called "Chick(en) Frame" KEKW
 
 ---
@@ -15,9 +16,11 @@ Luckily I found the [API for this](https://api.hifumin.app) [`(source)`](https:/
 ---
 
 PC
+
 > ![image](https://user-images.githubusercontent.com/76484203/228002396-e06f3a84-dce4-40ec-b4b9-fdf458e133bd.png)
 
 Mobile
+
 > ![localhost_5173_view_433390 (2)](https://user-images.githubusercontent.com/76484203/228002564-97a6a83b-a13c-4a0c-ba7b-a196be9bb49b.png)
 
 ---
@@ -29,16 +32,17 @@ Like for example: [hifumin which use the same API](https://hifumin.app) is... ju
 And what's more is that search is **KIND OF** harder to use compare to the [`nhentai`](https://nhentai.net) itself
 
 That's mainly why I have done this
-- English **ONLY** by default; Might implement something to disable this AS AN OPTION in the future.
-- Search by tag(or at least I think so), seperated by comma (`,`); Like how you would prompt SD Anime Model.
+
+-   English **ONLY** by default; Might implement something to disable this AS AN OPTION in the future.
+-   Search by tag(or at least I think so), seperated by comma (`,`); Like how you would prompt SD Anime Model.
     > `milf, full color` will search for `milf`, `full color` and `english`
 
 # Get it up and running
 
 ## Requirement
 
-- `node` - built with `v19.7.0`
-- `npm` - built with `9.6.2`
+-   `node` - built with `v19.7.0`
+-   `npm` - built with `9.6.2`
 
 ---
 
@@ -49,16 +53,19 @@ That's mainly why I have done this
 
 # Issues
 
-> - ✅ means `Fixed`
-> - 🔧 means `Partially fixed` 
-> - ❌ means `Can't be fix`
+> -   ✅ means `Fixed`
+> -   🔧 means `Partially fixed`
+> -   ❌ means `Can't be fix`
 
-[ 🔧 ] images does not load correctly on subsequent browsing on iOS device (test on [BrowserStack](https://www.browserstack.com) iPhone 13 & my iPhone 11)  
+[ 🔧 ] images does not load correctly on subsequent browsing on iOS device (test on [BrowserStack](https://www.browserstack.com) iPhone 13 & my iPhone 11)
+
 > meaning even if you change the browser it's still not work and  
-> **IT DOES WORK IF YOU WERE TO RELOAD THE PAGE** ***OR*** **WAIT LONG ENOUGH** which confused me the most
-    
-[ ✅ ] images failed to load if there are too many images on the current page 
+> **IT DOES WORK IF YOU WERE TO RELOAD THE PAGE** **_OR_** **WAIT LONG ENOUGH** which confused me the most
+
+[ ✅ ] images failed to load if there are too many images on the current page
+
 > might be: too many request to [`nhentai`](https://nhentai.net) so they refused? lazy loading incoming?
 
 [ ❌ ] Data kinda buggy if page >= 41
+
 > This is the [API](https://api.hifumin.app) fault and not mine.
