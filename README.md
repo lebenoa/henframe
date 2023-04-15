@@ -53,19 +53,19 @@ That's mainly why I have done this
 
 # Issues
 
-> -   ✅ means `Fixed`
-> -   🔧 means `Partially fixed`
-> -   ❌ means `Can't be fix`
+>   ✅ means `Fixed` |
+>   🔧 means `Partially fixed` |
+>   ❌ means `Can't be fix`
 
-[ 🔧 ] images does not load correctly on subsequent browsing on iOS device (test on [BrowserStack](https://www.browserstack.com) iPhone 13 & my iPhone 11)
+- [ ✅ ] images does not load correctly on subsequent browsing on iOS device (test on [BrowserStack](https://www.browserstack.com) iPhone 13 & my iPhone 11)
 
 > meaning even if you change the browser it's still not work and  
 > **IT DOES WORK IF YOU WERE TO RELOAD THE PAGE** **_OR_** **WAIT LONG ENOUGH** which confused me the most
 
-[ ✅ ] images failed to load if there are too many images on the current page
+- [ ✅ ] images failed to load if there are too many images on the current page
 
 > might be: too many request to [`nhentai`](https://nhentai.net) so they refused? lazy loading incoming?
 
-[ ❌ ] Data kinda buggy if page >= 41
+- [ ❌ ] Data kinda buggy if page >= 41
 
 > This is the [API](https://api.hifumin.app) fault and not mine.
