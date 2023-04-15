@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { lazyLoad } from '$lib/lazyload';
     import { fade } from 'svelte/transition';
 
     export let id: number;
@@ -16,7 +17,7 @@
     data-sveltekit-preload-data="off"
 >
     <h2>{title}</h2>
-    <img {width} {height} src={link} alt={link} referrerpolicy="same-origin" />
+    <img {width} {height} use:lazyLoad={link} alt={link} referrerpolicy="same-origin" />
 </a>
 
 <style>

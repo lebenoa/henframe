@@ -3,9 +3,9 @@
     import { enhance } from '$app/forms';
 
     let searchTerm = '';
-    let path = $page.url.pathname;
+    $: path = $page.url.pathname;
 
-    if (path.startsWith('/search/')) {
+    $: if (/^\/search\/\S+\s*\d+$/.test(path)) {
         searchTerm = path.replace('/search/', '').split('/')[0].replaceAll('%20', ' ');
     }
 </script>
@@ -13,11 +13,11 @@
 <header>
     <nav>
         <ul>
-            <li aria-current={path === '/' ? 'page' : undefined}>
+            <li class:active={path === '/'}>
                 <a href="/">Home</a>
             </li>
             <li id="search-bar">
-                <form method="POST" action="/?/search" class="container" use:enhance>
+                <form method="POST" action="/" class="container" use:enhance>
                     <input
                         type="text"
                         name="term"
@@ -71,16 +71,19 @@
         height: 100%;
     }
 
+    .active {
+        border-top: 1px solid var(--color-theme-1);
+        border-bottom: 1px solid var(--color-theme-1);
+    }
+
+    .active a {
+        color: var(--color-theme-1);
+    }
+
     #search-bar {
         position: absolute;
         right: 0;
         width: 33%;
-    }
-
-    @media (max-width: 768px) {
-        #search-bar {
-            width: 60%;
-        }
     }
 
     nav a {
@@ -134,6 +137,10 @@
         #search-button:active {
             background-color: green;
             color: black;
+        }
+
+        #search-bar {
+            width: 60%;
         }
     }
 </style>

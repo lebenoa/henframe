@@ -1,12 +1,11 @@
 <script lang="ts">
     import type { PageData } from './$types';
+    import Card from '$lib/components/card.svelte';
+    import { page } from '$app/stores';
 
     export let data: PageData;
 
     $: ({ result } = data);
-
-    import Card from '$lib/components/card.svelte';
-    import { page } from '$app/stores';
 
     $: currentPage = parseInt($page.params.page);
 

@@ -1,10 +1,9 @@
 <script lang="ts">
     import { fly } from 'svelte/transition';
     import type { PageData } from './$types';
+    import { lazyLoad } from '$lib/lazyload';
 
     export let data: PageData;
-
-    import { lazyLoad } from './lazyload';
 
     $: ({ result } = data);
 
