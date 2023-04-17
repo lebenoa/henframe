@@ -28,7 +28,8 @@
 </svelte:head>
 
 {#if result.success}
-    <h1 title="Displaying 25 items per page">Found {result.total} items</h1>
+    <h1>Found <span>{result.total}</span> items</h1>
+    <h3>Total page: <span>{lastPage}</span></h3>
     <div class="container">
         {#each result.data as res}
             <Card
@@ -117,5 +118,13 @@
     .dot {
         display: flex;
         align-items: center;
+    }
+
+    span {
+        color: yellowgreen;
+    }
+
+    h3 {
+        text-align: center;
     }
 </style>

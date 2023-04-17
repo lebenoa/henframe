@@ -18,7 +18,14 @@
 >
     <h2>{title}</h2>
     {#key link}
-        <img {width} {height} use:lazyLoad={link} alt={link} referrerpolicy="same-origin" in:scale />
+        <img
+            {width}
+            {height}
+            use:lazyLoad={link}
+            alt={link}
+            referrerpolicy="same-origin"
+            in:scale
+        />
     {/key}
 </a>
 

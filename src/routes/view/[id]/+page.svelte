@@ -1,7 +1,8 @@
 <script lang="ts">
-    import { fly } from 'svelte/transition';
+    import { fly, blur } from 'svelte/transition';
     import type { PageData } from './$types';
     import { lazyLoad } from '$lib/lazyload';
+    import { page } from '$app/stores';
 
     export let data: PageData;
 
@@ -12,7 +13,7 @@
 
 <svelte:head>
     {#if result.success}
-        <title>{result.data.title.display}</title>
+        <title>{$page.params.id} | {result.data.title.display}</title>
     {/if}
 </svelte:head>
 
@@ -60,7 +61,7 @@
             </div>
         {/if}
         {#each result.data.images.pages as res}
-            <img alt={res.link} referrerpolicy="same-origin" use:lazyLoad={res.link} />
+            <img alt={res.link} referrerpolicy="same-origin" use:lazyLoad={res.link} transition:blur/>
         {/each}
     </div>
 {/if}
