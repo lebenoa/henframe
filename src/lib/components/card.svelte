@@ -1,6 +1,6 @@
 <script lang="ts">
     import { lazyLoad } from '$lib/lazyload';
-    import { fade } from 'svelte/transition';
+    import { scale } from 'svelte/transition';
 
     export let id: number;
     export let title: string;
@@ -13,11 +13,13 @@
     href="/view/{id}"
     class="container"
     style="width: {width}px;"
-    transition:fade
+    in:scale
     data-sveltekit-preload-data="off"
 >
     <h2>{title}</h2>
-    <img {width} {height} use:lazyLoad={link} alt={link} referrerpolicy="same-origin" />
+    {#key link}
+        <img {width} {height} use:lazyLoad={link} alt={link} referrerpolicy="same-origin" in:scale />
+    {/key}
 </a>
 
 <style>
