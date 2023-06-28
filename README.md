@@ -36,20 +36,23 @@ That's mainly why I have done this
 -   English **ONLY** by default; Might implement something to disable this *AS AN OPTION* in the future.
 -   Search by tag(or at least I think so), seperated by comma (`,`); Like how you would prompt SD Anime Model.
     > `milf, full color` will search for `milf`, `full color` and `english`
+    > 
+    > ***TIPS***: Search for tags with last character remove to get latest data.  
+    > For example, instead of `schoolgirl uniform`, you should do `schoolgirl unifor`
 
 # Get it up and running
 
 ## Requirement
 
--   `node` - built with `v19.7.0`
--   `npm` - built with `9.6.2`
+-   `node` - built with `v20.3.1`
+-   `pnpm` - built with `8.6.5`
 
 ---
 
 1. Clone this repository. Extract it to somewhere
 1. Navigate to root folder (where `package.json` located)
-1. Open a terminal and run `npm i`
-1. Run `npm run dev` to run in dev mode. Check out [SvelteKit guide to deploy to production](https://kit.svelte.dev/docs/adapters).
+1. Open a terminal and run `pnpm i`
+1. Run `pnpm dev` to run in dev mode. Check out [SvelteKit guide to deploy to production](https://kit.svelte.dev/docs/adapters).
 
 # Issues
 - [ ❌ ] Data kinda buggy if page >= 41
