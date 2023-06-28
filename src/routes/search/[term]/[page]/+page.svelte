@@ -7,14 +7,19 @@
 
     $: ({ result } = data);
 
+    $: term = $page.params.term;
     $: currentPage = parseInt($page.params.page);
 
     let lastPage: number;
     $: if (result.success) {
-        let totalPage = result.total / 25;
-        lastPage = Number.isInteger(totalPage) ? totalPage : Math.floor(totalPage) + 1;
+        if (result.total == 0) {
+            lastPage = currentPage + 1;
+        } else {
+            let totalPage = result.total / 25;
+            lastPage = Number.isInteger(totalPage) ? totalPage : Math.floor(totalPage) + 1;
+        }
     } else {
-        lastPage = 1;
+        lastPage = currentPage;
     }
 
     $: previousPage = currentPage == 1 ? 1 : currentPage - 1;
@@ -22,8 +27,10 @@
 </script>
 
 <svelte:head>
-    {#if result.success && $page.params.term}
-        <title>{$page.params.term.toUpperCase()} | Search</title>
+    {#if result.success && term}
+        {#key term}
+            <title>{term.toUpperCase()} | Search</title>
+        {/key}
     {/if}
 </svelte:head>
 
@@ -43,7 +50,7 @@
     </div>
     <div class="container btn-container">
         {#if currentPage != 1}
-            <a href="/search/{$page.params.term}/1">1</a>
+            <a href="/search/{term}/1">1</a>
         {/if}
 
         {#if previousPage > 2}
@@ -51,7 +58,7 @@
         {/if}
 
         {#if previousPage != 1}
-            <a href="/search/{$page.params.term}/{previousPage}">{previousPage}</a>
+            <a href="/search/{term}/{previousPage}">{previousPage}</a>
         {/if}
 
         <!-- svelte-ignore a11y-missing-attribute -->
@@ -59,7 +66,7 @@
 
         {#if lastPage != 1}
             {#if lastPage - currentPage >= 1}
-                <a href="/search/{$page.params.term}/{nextPage}">{nextPage}</a>
+                <a href="/search/{term}/{nextPage}">{nextPage}</a>
             {/if}
 
             {#if lastPage - nextPage > 1}
@@ -67,10 +74,12 @@
             {/if}
 
             {#if lastPage - nextPage >= 1}
-                <a href="/search/{$page.params.term}/{lastPage}">{lastPage}</a>
+                <a href="/search/{term}/{lastPage}">{lastPage}</a>
             {/if}
         {/if}
     </div>
+{:else}
+    <h1>Nothing Found!</h1>
 {/if}
 
 <style>
