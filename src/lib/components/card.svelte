@@ -12,9 +12,7 @@
 <a
     href="/view/{id}"
     class="container"
-    style="width: {width}px;"
     in:scale
-    data-sveltekit-preload-data="off"
 >
     <h2>{title}</h2>
     {#key link}
@@ -35,7 +33,9 @@
     }
 
     .container {
-        border: 1px solid white;
+        width: 350px;
+        border: 1px solid orangered;
         margin: 0.5rem;
+        box-sizing: initial;
     }
 </style>

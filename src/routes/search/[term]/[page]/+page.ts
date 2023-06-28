@@ -32,7 +32,7 @@ export const load = (async ({ params, fetch }) => {
         pageNumber = 1;
     }
 
-    let jsonData = await search(term, pageNumber);
+    let jsonData = await search(term, pageNumber, fetch);
 
     return {
         result: jsonData.data.nhql.search

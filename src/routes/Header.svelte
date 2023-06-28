@@ -38,15 +38,6 @@
         justify-content: space-between;
     }
 
-    input {
-        width: 100%;
-        height: 90%;
-        border: 1px solid rgb(170, 170, 170);
-        text-align: center;
-        background: rgba(5, 5, 5, 0.7);
-        color: white;
-    }
-
     nav {
         display: flex;
         justify-content: center;
@@ -83,7 +74,22 @@
     #search-bar {
         position: absolute;
         right: 0;
-        width: 33%;
+        width: 50%;
+    }
+
+    #search-bar input {
+        width: 100%;
+        height: 90%;
+        text-align: center;
+        background: rgba(5, 5, 5, 0.7);
+        color: white;
+        border-radius: 0;
+        border: 1px solid rgba(255, 0, 0, .6);
+        transition: .5s all;
+    }
+
+    #search-bar input:focus {
+        border: 1px solid rgb(255, 0, 0);
     }
 
     nav a {
@@ -124,6 +130,7 @@
     #search-button {
         border: 1px solid green;
         color: white;
+        padding: 0.65rem;
     }
 
     @media (min-width: 768px) {
@@ -140,7 +147,7 @@
         }
 
         #search-bar {
-            width: 60%;
+            width: 80%;
         }
     }
 </style>

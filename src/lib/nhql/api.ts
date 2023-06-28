@@ -2,7 +2,7 @@ import type { APIByResponse, APISearchResponse } from './type';
 
 export const API_ENDPOINT = 'https://api.hifumin.app/v1/graphql';
 
-export async function getByID(id: number): Promise<APIByResponse> {
+export async function getByID(id: number, fetcher: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>): Promise<APIByResponse> {
     let requestBody = {
         operationName: 'getByID',
         variables: { id },
@@ -44,7 +44,7 @@ export async function getByID(id: number): Promise<APIByResponse> {
 			}`
     };
 
-    let result = await fetch(API_ENDPOINT, {
+    let result = await fetcher(API_ENDPOINT, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -55,7 +55,7 @@ export async function getByID(id: number): Promise<APIByResponse> {
     return result.json();
 }
 
-export async function search(inc: string[], pg: number): Promise<APISearchResponse> {
+export async function search(inc: string[], pg: number, fetcher: (input: RequestInfo | URL, init?: RequestInit | undefined) => Promise<Response>): Promise<APISearchResponse> {
     let requestBody = {
         operationName: 'searchFor',
         variables: { inc, pg },
@@ -85,7 +85,7 @@ export async function search(inc: string[], pg: number): Promise<APISearchRespon
 			}`
     };
 
-    let result = await fetch(API_ENDPOINT, {
+    let result = await fetcher(API_ENDPOINT, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

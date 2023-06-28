@@ -19,7 +19,7 @@
 
 {#if result.success}
     <div class="container">
-        <button on:click={() => (showInfo = !showInfo)}>Toggle Information</button>
+        <button id="info-btn" on:click={() => (showInfo = !showInfo)}>Toggle Information</button>
         {#if showInfo}
             <div class="container" transition:fly={{ x: -300 }}>
                 <div class="item">
@@ -61,8 +61,31 @@
             </div>
         {/if}
         {#each result.data.images.pages as res}
-            <img alt={res.link} referrerpolicy="same-origin" use:lazyLoad={res.link} transition:blur/>
+            {#key res.link}
+                <img
+                    alt={res.link}
+                    referrerpolicy="same-origin"
+                    use:lazyLoad={res.link}
+                    transition:blur
+                />
+            {/key}
         {/each}
+        <button
+            id="back-to-top-btn"
+            on:click={() => {
+                document.body.scrollTo({
+                    behavior: 'smooth',
+                    top: 0
+                });
+
+                document.documentElement.scrollTo({
+                    behavior: 'smooth',
+                    top: 0
+                });
+            }}
+        >
+            Back to Top
+        </button>
     </div>
 {/if}
 
@@ -73,6 +96,10 @@
         align-items: center;
         width: 100%;
         text-align: center;
+    }
+
+    #info-btn {
+        width: 50%;
     }
 
     .item:last-child {
@@ -125,10 +152,29 @@
         transition: all 0.3s;
     }
 
+    img:last-child {
+        margin-bottom: 10rem;
+    }
+
+    #back-to-top-btn {
+        width: 50%;
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+    }
+
     @media (max-width: 768px) {
+        #info-btn {
+        width: 100%;
+    }
+
         img {
             width: 100%;
             max-width: 100%;
+        }
+
+        #back-to-top-btn {
+            width: 100%;
+            margin-bottom: 4rem;
         }
     }
 </style>

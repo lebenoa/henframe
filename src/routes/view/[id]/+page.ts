@@ -9,7 +9,7 @@ export const load = (async ({ params, fetch }) => {
     if (!params.id) throw error(404, 'Not found');
     else if (params.id.length == 6 && !/^\d+$/.test(params.id)) throw error(404, 'Not found');
 
-    let jsonData = await getByID(parseInt(params.id));
+    let jsonData = await getByID(parseInt(params.id), fetch);
 
     return {
         result: jsonData.data.nhql.by
