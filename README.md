@@ -17,11 +17,11 @@ Luckily I found the [API for this](https://api.hifumin.app) [`(source)`](https:/
 
 PC
 
-> ![image](https://user-images.githubusercontent.com/76484203/228002396-e06f3a84-dce4-40ec-b4b9-fdf458e133bd.png)
+> ![image](https://github.com/Meonako/henframe/assets/76484203/90bac617-7485-4301-ae12-a4f6d521570e)
 
 Mobile
 
-> ![localhost_5173_view_433390 (2)](https://user-images.githubusercontent.com/76484203/228002564-97a6a83b-a13c-4a0c-ba7b-a196be9bb49b.png)
+> ![image](https://github.com/Meonako/henframe/assets/76484203/8ca162de-5cf4-42d3-912f-8bb8c3a25d0f)
 
 ---
 
@@ -33,7 +33,7 @@ And what's more is that search is **KIND OF** harder to use compare to the [`nhe
 
 That's mainly why I have done this
 
--   English **ONLY** by default; Might implement something to disable this AS AN OPTION in the future.
+-   English **ONLY** by default; Might implement something to disable this *AS AN OPTION* in the future.
 -   Search by tag(or at least I think so), seperated by comma (`,`); Like how you would prompt SD Anime Model.
     > `milf, full color` will search for `milf`, `full color` and `english`
 
@@ -52,20 +52,6 @@ That's mainly why I have done this
 1. Run `npm run dev` to run in dev mode. Check out [SvelteKit guide to deploy to production](https://kit.svelte.dev/docs/adapters).
 
 # Issues
-
->   ✅ means `Fixed` |
->   🔧 means `Partially fixed` |
->   ❌ means `Can't be fix`
-
-- [ ✅ ] images does not load correctly on subsequent browsing on iOS device (test on [BrowserStack](https://www.browserstack.com) iPhone 13 & my iPhone 11)
-
-  > meaning even if you change the browser it's still not work and  
-  > **IT DOES WORK IF YOU WERE TO RELOAD THE PAGE** **_OR_** **WAIT LONG ENOUGH** which confused me the most
-
-- [ ✅ ] images failed to load if there are too many images on the current page
-
-  > might be: too many request to [`nhentai`](https://nhentai.net) so they refused? lazy loading incoming?
-
 - [ ❌ ] Data kinda buggy if page >= 41
 
   > This is the [API](https://api.hifumin.app) fault and not mine.
