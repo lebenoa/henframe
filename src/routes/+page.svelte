@@ -3,6 +3,7 @@
 	import SpinnerContainer from "$lib/components/SpinnerContainer.svelte";
 	import { search } from "$lib/nhql/api";
 	import { title } from "$lib/stores/title.svelte";
+	import { settings } from "$lib/stores/settings.svelte";
 	import type { APISearchResponse } from "$lib/nhql/types";
 
 	async function fetchData(): Promise<APISearchResponse> {
@@ -15,7 +16,7 @@
 {#await fetchData()}
 	<SpinnerContainer />
 {:then data}
-	<div class="grid grid-cols-2 gap-x-1 gap-y-3 lg:grid-cols-5">
+	<div class="grid grid-cols-2 gap-x-1 gap-y-3 lg:grid-cols-5" style={settings.gridCols > 0 ? `grid-template-columns: repeat(${settings.gridCols}, minmax(0, 1fr));` : ''}>
 		{#each data.data.nhql.search.data as info}
 			<Card {info} />
 		{/each}

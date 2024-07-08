@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import "../app.css";
 
 	let { children } = $props();
@@ -28,6 +28,11 @@
 			settings.save();
 		}
 	});
+
+	function dec(x: number) {
+		if (x <= 0) return 0;
+		return x - 1;
+	}
 </script>
 
 <svelte:head>
@@ -41,6 +46,42 @@
 	>
 	<h1 class="mb-0">Settings</h1>
 
+	<label class="mb-2 w-full" for="gridCols">
+		<h2 class="mb-0">Grid Columns</h2>
+		<p>Number of columns in Home/Search page</p>
+		<p>0 = auto</p>
+	</label>
+
+	<div class="flex w-full flex-row gap-1">
+		<button
+			class="border border-pink-500 px-4 py-2 text-pink-500 transition-colors active:bg-pink-500 active:text-black lg:hover:bg-pink-500 lg:hover:text-black"
+			onclick={() => settings.gridCols = dec(settings.gridCols)}
+		>
+			<ChevronLeft />
+		</button>
+		<div class="flex flex-col w-full h-full">
+			<input
+				class="w-full border border-slate-500 bg-slate-500 bg-opacity-45 p-1 text-white text-center"
+				type="number"
+				id="gridCols"
+				bind:value={settings.gridCols}
+			/>
+			<input
+				class="w-full"
+				type="range"
+				min="0"
+				max="10"
+				bind:value={settings.gridCols}
+			/>
+		</div>
+		<button
+			class="border border-pink-500 px-4 py-2 text-pink-500 transition-colors active:bg-pink-500 active:text-black lg:hover:bg-pink-500 lg:hover:text-black"
+			onclick={() => (settings.gridCols += 1)}
+		>
+			<ChevronRight />
+		</button>
+	</div>
+
 	<label class="mb-2 w-full" for="xMargin">
 		<h2>Page's X-Axis Margin</h2>
 	</label>
@@ -48,7 +89,7 @@
 	<div class="flex w-full flex-row gap-1">
 		<button
 			class="border border-pink-500 px-4 py-2 text-pink-500 transition-colors active:bg-pink-500 active:text-black lg:hover:bg-pink-500 lg:hover:text-black"
-			onclick={() => (settings.xMargin -= 1)}
+			onclick={() => settings.xMargin = dec(settings.xMargin)}
 		>
 			<ChevronLeft />
 		</button>
@@ -81,7 +122,7 @@
 	<div class="flex w-full flex-row gap-1">
 		<button
 			class="border border-pink-500 px-4 py-2 text-pink-500 transition-colors active:bg-pink-500 active:text-black lg:hover:bg-pink-500 lg:hover:text-black"
-			onclick={() => (settings.yMargin -= 1)}
+			onclick={() => settings.yMargin = dec(settings.yMargin)}
 		>
 			<ChevronLeft />
 		</button>
