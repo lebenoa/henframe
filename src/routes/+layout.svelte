@@ -18,10 +18,8 @@
 	let showModal = $state(false);
 
 	$effect(() => {
-		searchTerm = $page.url.searchParams.get("q") || "";
+		searchTerm = $page.url.searchParams.get("q") || searchTerm;
 	});
-
-	$inspect(showModal);
 
 	$effect(() => {
 		if (!showModal) {
@@ -70,7 +68,7 @@
 </Modal>
 
 <div class="flex h-full flex-col">
-	<nav class=" bg-black py-2 text-white">
+	<nav class=" bg-black p-2 text-white">
 		<div class="flex flex-row">
 			<Button onclick={() => goto("/")}>
 				<House />
@@ -89,9 +87,9 @@
 				}}
 			>
 				<input
-					class="h-full w-full bg-slate-900 px-4 py-2 text-2xl focus-visible:rounded-none"
+					class="h-full w-full bg-slate-900 px-4 py-2 md:text-lg lg:text-xl focus-visible:rounded-none"
 					type="search"
-					placeholder="Search or 6-digit code here"
+					placeholder="Search or code here"
 					bind:value={searchTerm}
 				/>
 				<Button class="h-full" type="submit">
