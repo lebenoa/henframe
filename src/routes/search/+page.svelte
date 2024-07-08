@@ -17,23 +17,26 @@
 	async function fetchData(): Promise<APISearchResponse> {
 		if (!q) throw new Error("No query provided");
 
-		let term: string[] = [];
+		let terms: string[] = ["englis"];
 
 		if (q.includes(",")) {
-			let qterms = q.split(",");
-			if (!qterms.includes("english") && !qterms.includes("englis")) {
-				term = ["englis"];
-			}
-			term = term.concat(q.split(","));
+			let qterms = q.split(",").map((q) => q.trim());
 
-			for (let i = 1; i < term.length; i++) {
-				term[i] = term[i].trim();
+			if (qterms.includes("english") || qterms.includes("-english")) {
+				terms = qterms;
+			} else {
+				terms = terms.concat(qterms);
 			}
 		} else {
-			term.push(q.trim());
+			let trimmed = q.trim();
+			if (trimmed === "english") {
+				terms = [q];
+			} else {
+				terms.push(trimmed);
+			}
 		}
 
-		const searchResult = search(term, qp ? parseInt(qp) : 1, fetch);
+		const searchResult = search(terms, qp ? parseInt(qp) : 1, fetch);
 
 		title.title = `${q} | Henframe`;
 
