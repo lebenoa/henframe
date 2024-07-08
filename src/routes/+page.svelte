@@ -1,38 +1,20 @@
 <script lang="ts">
-    import type { PageData } from './$types';
+	import Card from '$lib/components/Card.svelte';
+	import SpinnerContainer from '$lib/components/SpinnerContainer.svelte';
+    import { search } from '$lib/nhql/api';
+	import type { APISearchResponse } from '$lib/nhql/types';
 
-    export let data: PageData;
-
-    $: ({ result } = data);
-
-    import Card from '$lib/components/card.svelte';
+	async function fetchData(): Promise<APISearchResponse> {
+		return search(['englis'], 1, fetch);
+	}
 </script>
 
-<svelte:head>
-    <title>Home</title>
-    <meta name="description" content="Chicken Frame as opposed to War Frame KEKW" />
-</svelte:head>
-
-{#if result.success}
-    <div class="container">
-        {#each result.data as res}
-            <Card
-                id={res.id}
-                title={res.title.display}
-                width={res.images.cover.info.width}
-                height={res.images.cover.info.height}
-                link={res.images.cover.link}
-            />
-        {/each}
-    </div>
-{/if}
-
-<style>
-    .container {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-</style>
+{#await fetchData()}
+	<SpinnerContainer />
+{:then data}
+	<div class="grid grid-cols-2 gap-x-1 gap-y-3 lg:grid-cols-5">
+		{#each data.data.nhql.search.data as info}
+			<Card {info} />
+		{/each}
+	</div>
+{/await}
