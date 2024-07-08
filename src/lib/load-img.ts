@@ -1,7 +1,7 @@
 // Currently unused.
 // This used to replace spinners with images but somehow it didn't work.
 // Neither with `img.complete` or `img.addEventListener("load", onLoad)`.
-// It did load image but didn't replace the spinner `node` for some reason.
+// It did load the image but didn't replace the spinner (`node`) for some reason.
 // That's left use with `setTimeout` but it didn't solve the problem I was trying to solve.
 // (Show loading state of an image since `<img>` by itself doesn't have width or height and I don't want to hardcode it)
 

@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type { NhqlTag } from "$lib/nhql/types";
 
-    type Props = {
-        title: string;
-        data: NhqlTag[];
-    }
+	type Props = {
+		title: string;
+		data: NhqlTag[];
+	};
 
-    let { title, data }: Props = $props();
+	let { title, data }: Props = $props();
 </script>
 
 <h3 class="mx-2 text-center text-xl">{title}</h3>
