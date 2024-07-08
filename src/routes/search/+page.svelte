@@ -1,13 +1,13 @@
 <script lang="ts">
 	import Card from "$lib/components/Card.svelte";
 	import { search } from "$lib/nhql/api";
+	import { title } from "$lib/stores/title.svelte";
 	import { page } from "$app/stores";
 	import type { APISearchResponse } from "$lib/nhql/types";
 	import SpinnerContainer from "$lib/components/SpinnerContainer.svelte";
-	import { title } from "$lib/stores/title.svelte";
 	import ErrorDisplay from "$lib/components/ErrorDisplay.svelte";
 
-	let q: string = $state("");
+	let q = $state("");
 	let qp = $state(1);
 	let hasPreviousPage = $state(false);
 
@@ -20,7 +20,7 @@
 	async function fetchData(): Promise<APISearchResponse> {
 		if (!q) throw new Error("No query provided");
 
-		let terms: string[] = ["englis"];
+		let terms = ["englis"];
 
 		if (q.includes(",")) {
 			let qterms = q.split(",").map((q) => q.trim());
