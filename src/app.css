@@ -18,5 +18,5 @@ body {
 }
 
 img {
-	@apply min-h-4
+	@apply min-h-4;
 }

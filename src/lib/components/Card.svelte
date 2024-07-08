@@ -14,7 +14,7 @@
 >
 	<!-- svelte-ignore a11y_missing_attribute -->
 	<img
-		class="bg-cyan-800 my-auto"
+		class="my-auto bg-cyan-800"
 		src={info.images.cover.link}
 		alt={info.title.display}
 		referrerpolicy="same-origin"

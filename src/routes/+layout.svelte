@@ -13,6 +13,8 @@
 	import Cog from "$lib/icons/Cog.svelte";
 	import Search from "$lib/icons/Search.svelte";
 	import House from "$lib/icons/House.svelte";
+	import ChevronLeft from "$lib/icons/ChevronLeft.svelte";
+	import ChevronRight from "$lib/icons/ChevronRight.svelte";
 
 	let searchTerm = $state("");
 	let showModal = $state(false);
@@ -39,25 +41,72 @@
 	>
 	<h1 class="mb-0">Settings</h1>
 
-	<label class="mb-2">
-		<h2>X Margin</h2>
-		<input
-			class="w-full border border-slate-500 bg-slate-500 bg-opacity-45 p-1 text-white"
-			type="number"
-			bind:value={settings.xMargin}
-		/>
+	<label class="mb-2 w-full" for="xMargin">
+		<h2>Page's X-Axis Margin</h2>
 	</label>
-	<input type="range" min="0" max="100" bind:value={settings.xMargin} />
 
-	<label class="mb-2">
-		<h2>Y Margin</h2>
-		<input
-			class="w-full border border-slate-500 bg-slate-500 bg-opacity-45 p-1 text-white"
-			type="number"
-			bind:value={settings.yMargin}
-		/>
+	<div class="flex w-full flex-row gap-1">
+		<button
+			class="border border-pink-500 px-4 py-2 text-pink-500 transition-colors active:bg-pink-500 active:text-black lg:hover:bg-pink-500 lg:hover:text-black"
+			onclick={() => (settings.xMargin -= 1)}
+		>
+			<ChevronLeft />
+		</button>
+		<div class="flex flex-col w-full h-full">
+			<input
+				class="w-full border border-slate-500 bg-slate-500 bg-opacity-45 p-1 text-white text-center"
+				type="number"
+				id="xMargin"
+				bind:value={settings.xMargin}
+			/>
+			<input
+				class="w-full"
+				type="range"
+				min="0"
+				max="100"
+				bind:value={settings.xMargin}
+			/>
+		</div>
+		<button
+			class="border border-pink-500 px-4 py-2 text-pink-500 transition-colors active:bg-pink-500 active:text-black lg:hover:bg-pink-500 lg:hover:text-black"
+			onclick={() => (settings.xMargin += 1)}
+		>
+			<ChevronRight />
+		</button>
+	</div>
+
+	<label class="mb-2 w-full" for="yMargin">
+		<h2>Page's Y-Axis Margin</h2>
 	</label>
-	<input type="range" min="0" max="100" bind:value={settings.yMargin} />
+	<div class="flex w-full flex-row gap-1">
+		<button
+			class="border border-pink-500 px-4 py-2 text-pink-500 transition-colors active:bg-pink-500 active:text-black lg:hover:bg-pink-500 lg:hover:text-black"
+			onclick={() => (settings.yMargin -= 1)}
+		>
+			<ChevronLeft />
+		</button>
+		<div class="flex flex-col w-full h-full">
+			<input
+				class="w-full border border-slate-500 bg-slate-500 bg-opacity-45 p-1 text-white text-center"
+				type="number"
+				id="yMargin"
+				bind:value={settings.yMargin}
+			/>
+			<input
+				class="w-full"
+				type="range"
+				min="0"
+				max="100"
+				bind:value={settings.yMargin}
+			/>
+		</div>
+		<button
+			class="border border-pink-500 px-4 py-2 text-pink-500 transition-colors active:bg-pink-500 active:text-black lg:hover:bg-pink-500 lg:hover:text-black"
+			onclick={() => (settings.yMargin += 1)}
+		>
+			<ChevronRight />
+		</button>
+	</div>
 
 	<button
 		class="mt-8 border border-slate-500 p-2 text-slate-500 transition-colors active:bg-slate-500 active:text-white lg:hover:bg-slate-500 lg:hover:text-white"
@@ -71,7 +120,7 @@
 	<nav class="flex flex-row bg-black p-2 text-white">
 		<a
 			href="/"
-			class="flex px-5 py-2 flex-col items-center justify-center transition-colors active:bg-slate-500 lg:hover:bg-slate-500"
+			class="flex flex-col items-center justify-center px-5 py-2 transition-colors active:bg-slate-500 lg:hover:bg-slate-500"
 		>
 			<House />
 		</a>
