@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { goto } from "$app/navigation";
-
-	export let info: Nhql;
-
 	import type { Nhql } from "$lib/nhql/types";
+
+	// This is way easier than svelte 5 with typescript enabled. Cleaner, Simpler, Easier.
+	// Though might be deprecated in the future
+	export let info: Nhql;
 </script>
 
 <a
