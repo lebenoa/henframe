@@ -10,6 +10,7 @@
 	import { title } from "$lib/stores/title.svelte";
 	import { settings } from "$lib/stores/settings.svelte";
 	import { loadImg } from "$lib/load-img";
+	import Tag from "$lib/components/Tag.svelte";
 
 	let id = $state("");
 
@@ -36,63 +37,28 @@
 {:then data}
 	<div class="flex flex-col">
 		<button
-			class="border border-cyan-500 p-4 transition-colors active:bg-cyan-500 lg:hover:bg-cyan-500"
-			onclick={() => (showInfo = !showInfo)}>{showInfo ? "Hide" : "Show"} Info</button
+			class="border border-cyan-500 p-2 transition-colors active:bg-cyan-500 lg:hover:bg-cyan-500"
+			onclick={() => (showInfo = !showInfo)}
 		>
+			{showInfo ? "Hide" : "Show"} Info
+		</button>
 		{#if showInfo}
 			<div
 				class="flex flex-col items-center justify-center px-10"
 				transition:fly={{ x: -300, duration: 200 }}
 			>
 				{#if data.data.metadata.parodies.length > 0}
-					<h3 class="mx-2 text-center text-xl">Parodies</h3>
-					<div class="flex flex-row flex-wrap justify-center">
-						{#each data.data.metadata.parodies as { name }}
-							<a
-								href="/search?q={name}"
-								class="m-1 inline-flex border border-orange-500 bg-black px-2 py-1"
-								>{name}</a
-							>
-						{/each}
-					</div>
+					<Tag title="Parodies" data={data.data.metadata.parodies} />
 				{/if}
 
 				{#if data.data.metadata.characters.length > 0}
-					<h3 class="mx-2 text-center text-xl">Characters</h3>
-					<div class="flex flex-row flex-wrap justify-center">
-						{#each data.data.metadata.characters as { name }}
-							<a
-								href="/search?q={name}"
-								class="m-1 inline-flex border border-orange-500 bg-black px-2 py-1"
-								>{name}</a
-							>
-						{/each}
-					</div>
+					<Tag title="Characters" data={data.data.metadata.characters} />
 				{/if}
 
-				<h3 class="mx-2 text-center text-xl">Tags</h3>
-				<div class="flex flex-row flex-wrap justify-center">
-					{#each data.data.metadata.tags as { name }}
-						<a
-							href="/search?q={name}"
-							class="m-1 inline-flex border border-orange-500 bg-black px-2 py-1"
-						>
-							{name}
-						</a>
-					{/each}
-				</div>
+				<Tag title="Tags" data={data.data.metadata.tags} />
 
 				{#if data.data.metadata.artists.length > 0}
-					<h3 class="mx-2 text-center text-xl">Artists</h3>
-					<div class="flex flex-row flex-wrap justify-center">
-						{#each data.data.metadata.artists as { name }}
-							<a
-								href="/search?q={name}"
-								class="m-1 inline-flex border border-orange-500 bg-black px-2 py-1"
-								>{name}</a
-							>
-						{/each}
-					</div>
+					<Tag title="Artists" data={data.data.metadata.artists} />
 				{/if}
 			</div>
 		{/if}

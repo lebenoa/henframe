@@ -63,8 +63,10 @@
 
 	<button
 		class="mt-8 border border-slate-500 p-2 text-slate-500 transition-colors active:bg-slate-500 active:text-white lg:hover:bg-slate-500 lg:hover:text-white"
-		onclick={() => (showModal = false)}>Close</button
+		onclick={() => (showModal = false)}
 	>
+		Close
+	</button>
 </Modal>
 
 <div class="flex h-full flex-col">
@@ -104,7 +106,7 @@
 		</div>
 	</nav>
 
-	<div class="lg:p-2">
+	<div class="h-full lg:p-2">
 		{@render children()}
 	</div>
 </div>
