@@ -1,41 +1,23 @@
 <script lang="ts">
-    import { lazyLoad } from '$lib/lazyload';
-    import { scale } from 'svelte/transition';
+	import { goto } from "$app/navigation";
 
-    export let id: number;
-    export let title: string;
-    export let width: number;
-    export let height: number;
-    export let link: string;
+	export let info: Nhql;
+
+	import type { Nhql } from "$lib/nhql/types";
 </script>
 
-<a
-    href="/view/{id}"
-    class="container"
-    in:scale
+<button
+	class="flex h-fit w-full flex-col border border-orange-500 !bg-opacity-50 transition-colors active:bg-orange-500 lg:hover:bg-orange-500"
+	on:click={() => {
+		goto(`/read?id=${info.id}`);
+	}}
 >
-    <h2>{title}</h2>
-    {#key link}
-        <img
-            {width}
-            {height}
-            use:lazyLoad={link}
-            alt={link}
-            referrerpolicy="same-origin"
-            in:scale
-        />
-    {/key}
-</a>
-
-<style>
-    h2 {
-        margin: 0.7rem;
-    }
-
-    .container {
-        width: 350px;
-        border: 1px solid orangered;
-        margin: 0.5rem;
-        box-sizing: initial;
-    }
-</style>
+	<!-- svelte-ignore a11y_missing_attribute -->
+	<img class="min-w-full min-h-full bg-cyan-800" src={info.images.cover.link} referrerpolicy="same-origin" loading="lazy" />
+	<div class="w-full px-2 py-1">
+		<p>{info.title.display}</p>
+		<p class="{info.metadata.artists.length > 0 ? 'text-cyan-500' : 'text-red-500'}">
+			[{info.metadata.artists.length > 0 ? info.metadata.artists.map((artist) => artist.name).join(", ") : "Unknown Artist"}]
+		</p>
+	</div>
+</button>

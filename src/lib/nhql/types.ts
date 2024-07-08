@@ -1,7 +1,7 @@
 export type MultipleNHResponse = {
     success: Boolean;
     error: string;
-    data: [Nhresponse];
+    data: Nhresponse[];
 };
 
 export type Nhql = {
@@ -13,7 +13,7 @@ export type Nhql = {
 };
 
 export type NhqlImages = {
-    pages: [NhqlPage];
+    pages: NhqlPage[];
     cover: NhqlPage;
 };
 
@@ -25,12 +25,12 @@ export type NhqlInfo = {
 };
 
 export type NhqlMetadata = {
-    parodies: [NhqlTag];
-    characters: [NhqlTag];
-    groups: [NhqlTag];
-    categories: [NhqlTag];
-    artists: [NhqlTag];
-    tags: [NhqlTag];
+    parodies: NhqlTag[];
+    characters: NhqlTag[];
+    groups: NhqlTag[];
+    categories: NhqlTag[];
+    artists: NhqlTag[];
+    tags: NhqlTag[];
     language: string;
 };
 
@@ -67,7 +67,7 @@ export type NhsearchResponse = {
     success: Boolean;
     error: string;
     total: number;
-    data: [Nhql];
+    data: Nhql[];
 };
 
 export type APISearchResponse = {

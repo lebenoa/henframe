@@ -1,4 +1,4 @@
-import type { APIByResponse, APISearchResponse } from './type';
+import type { APIByResponse, APISearchResponse } from './types';
 
 export const API_ENDPOINT = 'https://api.hifumin.app/v1/graphql';
 
@@ -32,10 +32,6 @@ export async function getByID(id: number, fetcher: (input: RequestInfo | URL, in
 							images {
 								pages {
 									link
-									info {
-										width
-										height
-									}
 								}
 							}
 						}
@@ -59,8 +55,7 @@ export async function search(inc: string[], pg: number, fetcher: (input: Request
     let requestBody = {
         operationName: 'searchFor',
         variables: { inc, pg },
-        query: `
-			query searchFor($inc: [String]!, $pg: Int!) {
+        query: `query searchFor($inc: [String]!, $pg: Int!) {
 				nhql {
 					search(includes: $inc, page: $pg) {
 						success
@@ -70,13 +65,14 @@ export async function search(inc: string[], pg: number, fetcher: (input: Request
 							title {
 								display
 							}
+							metadata {
+								artists {
+									name
+								}
+							}
 							images {
 								cover {
 									link
-									info {
-										width
-										height
-									}
 								}
 							}
 						}
