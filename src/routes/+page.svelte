@@ -1,11 +1,11 @@
 <script lang="ts">
-	import Card from '$lib/components/Card.svelte';
-	import SpinnerContainer from '$lib/components/SpinnerContainer.svelte';
-    import { search } from '$lib/nhql/api';
-	import type { APISearchResponse } from '$lib/nhql/types';
+	import Card from "$lib/components/Card.svelte";
+	import SpinnerContainer from "$lib/components/SpinnerContainer.svelte";
+	import { search } from "$lib/nhql/api";
+	import type { APISearchResponse } from "$lib/nhql/types";
 
 	async function fetchData(): Promise<APISearchResponse> {
-		return search(['englis'], 1, fetch);
+		return search(["englis"], 1, fetch);
 	}
 </script>
 

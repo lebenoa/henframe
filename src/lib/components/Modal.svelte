@@ -16,7 +16,7 @@
 	<div
 		class="fixed bottom-0 left-0 right-0 top-0 z-10 flex items-center justify-center backdrop-blur backdrop-brightness-50"
 		onclick={() => (show = false)}
-        transition:fade
+		transition:fade
 	>
 		<div
 			transition:scale

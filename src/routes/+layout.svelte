@@ -27,7 +27,7 @@
 		if (!showModal) {
 			settings.save();
 		}
-	})
+	});
 </script>
 
 <svelte:head>
@@ -87,7 +87,7 @@
 				}}
 			>
 				<input
-					class="w-full h-full bg-slate-900 py-2 px-4 text-2xl focus-visible:rounded-none"
+					class="h-full w-full bg-slate-900 px-4 py-2 text-2xl focus-visible:rounded-none"
 					type="search"
 					placeholder="Search or 6-digit code here"
 					bind:value={searchTerm}
