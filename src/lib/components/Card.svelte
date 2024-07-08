@@ -10,12 +10,13 @@
 
 <a
 	href="/read?id={info.id}"
-	class="flex h-fit w-full flex-col border border-slate-500 !bg-opacity-50 transition-colors active:bg-orange-500 lg:hover:bg-orange-500"
+	class="flex w-full flex-col border border-slate-500 !bg-opacity-50 transition-colors active:bg-slate-500 lg:hover:bg-slate-500"
 >
 	<!-- svelte-ignore a11y_missing_attribute -->
 	<img
-		class="min-h-full min-w-full bg-cyan-800"
+		class="bg-cyan-800 my-auto"
 		src={info.images.cover.link}
+		alt={info.title.display}
 		referrerpolicy="same-origin"
 		loading="lazy"
 	/>

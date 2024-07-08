@@ -16,3 +16,7 @@ body {
 body {
 	@apply bg-zinc-900 text-white;
 }
+
+img {
+	@apply min-h-4
+}
