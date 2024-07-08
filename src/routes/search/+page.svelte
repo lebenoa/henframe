@@ -22,7 +22,10 @@
 		if (q.includes(",")) {
 			let qterms = q.split(",").map((q) => q.trim());
 
-			if (qterms.includes("english") || qterms.includes("-english")) {
+			if (qterms.includes("english")) {
+				terms = qterms;
+			} else if (qterms.includes("-english")) {
+				qterms.splice(qterms.indexOf("-english"), 1);
 				terms = qterms;
 			} else {
 				terms = terms.concat(qterms);
