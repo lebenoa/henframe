@@ -5,6 +5,7 @@
 	import type { APISearchResponse } from "$lib/nhql/types";
 	import SpinnerContainer from "$lib/components/SpinnerContainer.svelte";
 	import { title } from "$lib/stores/title.svelte";
+	import ErrorDisplay from "$lib/components/ErrorDisplay.svelte";
 
 	let q: string = $state("");
 	let qp = $state("");
@@ -56,6 +57,5 @@
 		{/each}
 	</div>
 {:catch error}
-	<h2 class="text-xl">Something went wrong</h2>
-	<p>{error}</p>
+	<ErrorDisplay {error} />
 {/await}

@@ -6,11 +6,9 @@
 	import type { Nhql } from "$lib/nhql/types";
 </script>
 
-<button
+<a
+	href="/read?id={info.id}"
 	class="flex h-fit w-full flex-col border border-orange-500 !bg-opacity-50 transition-colors active:bg-orange-500 lg:hover:bg-orange-500"
-	on:click={() => {
-		goto(`/read?id=${info.id}`);
-	}}
 >
 	<!-- svelte-ignore a11y_missing_attribute -->
 	<img
@@ -27,4 +25,4 @@
 				: "Unknown Artist"}]
 		</p>
 	</div>
-</button>
+</a>

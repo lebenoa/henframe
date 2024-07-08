@@ -9,8 +9,8 @@
 	import { fly } from "svelte/transition";
 	import { title } from "$lib/stores/title.svelte";
 	import { settings } from "$lib/stores/settings.svelte";
-	import { loadImg } from "$lib/load-img";
 	import Tag from "$lib/components/Tag.svelte";
+	import ErrorDisplay from "$lib/components/ErrorDisplay.svelte";
 
 	let id = $state("");
 
@@ -20,7 +20,7 @@
 
 	async function fetchData(): Promise<Nhresponse> {
 		if (!id) throw new Error("No ID provided");
-		if (!/^\d+$/.test(id)) throw new Error("Invalid ID provided");
+		if (!/^\d+$/.test(id)) throw new Error(`Invalid ID (${id})`);
 
 		const response = await getByID(parseInt(id), fetch);
 
@@ -124,6 +124,5 @@
 		{/each}
 	</div>
 {:catch error}
-	<h2 class="text-xl">Something went wrong</h2>
-	<p>{error}</p>
+	<ErrorDisplay {error} />
 {/await}
