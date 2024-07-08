@@ -96,11 +96,11 @@
 					<Search />
 					<span class="hidden md:block">Search</span>
 				</Button>
-				<Button class="h-full" onclick={() => (showModal = true)}>
-					<Cog />
-					<span class="hidden md:block">Settings</span>
-				</Button>
 			</form>
+			<Button class="h-full" onclick={() => (showModal = true)}>
+				<Cog />
+				<span class="hidden md:block">Settings</span>
+			</Button>
 		</div>
 	</nav>
 
