@@ -15,8 +15,7 @@ class Settings {
 	yMargin = $state(0);
 
 	constructor(value: SettingsObject) {
-		this.xMargin = value.xMargin;
-		this.yMargin = value.yMargin;
+		Object.assign(this, value);
 	}
 
 	save() {
