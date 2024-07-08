@@ -10,9 +10,9 @@
 	import { settings } from "$lib/stores/settings.svelte";
 	import Button from "$lib/components/Button.svelte";
 	import Modal from "$lib/components/Modal.svelte";
-	import Cog from "$lib/components/icons/Cog.svelte";
-	import Search from "$lib/components/icons/Search.svelte";
-	import House from "$lib/components/icons/House.svelte";
+	import Cog from "$lib/icons/Cog.svelte";
+	import Search from "$lib/icons/Search.svelte";
+	import House from "$lib/icons/House.svelte";
 
 	let searchTerm = $state("");
 	let showModal = $state(false);
