@@ -9,7 +9,7 @@ type SettingsObject = {
 const DEFAULT: SettingsObject = {
 	xMargin: 0,
 	yMargin: 0,
-	gridCols: 0,
+	gridCols: 0
 };
 
 class Settings {
@@ -21,8 +21,11 @@ class Settings {
 		Object.assign(this, value);
 	}
 
-	save() { 
-		localStorage.setItem(KEY, `{"xMargin":${this.xMargin},"yMargin":${this.yMargin},"gridCols":${this.gridCols}}`);
+	save() {
+		localStorage.setItem(
+			KEY,
+			`{"xMargin":${this.xMargin},"yMargin":${this.yMargin},"gridCols":${this.gridCols}}`
+		);
 	}
 }
 

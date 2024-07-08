@@ -54,7 +54,12 @@
 {#await fetchData()}
 	<SpinnerContainer />
 {:then data}
-	<div class="grid grid-cols-2 gap-x-1 gap-y-3 lg:grid-cols-5" style={settings.gridCols > 0 ? `grid-template-columns: repeat(${settings.gridCols}, minmax(0, 1fr));` : ''}>
+	<div
+		class="grid grid-cols-2 gap-x-1 gap-y-3 lg:grid-cols-5"
+		style={settings.gridCols > 0
+			? `grid-template-columns: repeat(${settings.gridCols}, minmax(0, 1fr));`
+			: ""}
+	>
 		{#each data.data.nhql.search.data as info}
 			<Card {info} />
 		{/each}

@@ -55,24 +55,18 @@
 	<div class="flex w-full flex-row gap-1">
 		<button
 			class="border border-pink-500 px-4 py-2 text-pink-500 transition-colors active:bg-pink-500 active:text-black lg:hover:bg-pink-500 lg:hover:text-black"
-			onclick={() => settings.gridCols = dec(settings.gridCols)}
+			onclick={() => (settings.gridCols = dec(settings.gridCols))}
 		>
 			<ChevronLeft />
 		</button>
-		<div class="flex flex-col w-full h-full">
+		<div class="flex h-full w-full flex-col">
 			<input
-				class="w-full border border-slate-500 bg-slate-500 bg-opacity-45 p-1 text-white text-center"
+				class="w-full border border-slate-500 bg-slate-500 bg-opacity-45 p-1 text-center text-white"
 				type="number"
 				id="gridCols"
 				bind:value={settings.gridCols}
 			/>
-			<input
-				class="w-full"
-				type="range"
-				min="0"
-				max="10"
-				bind:value={settings.gridCols}
-			/>
+			<input class="w-full" type="range" min="0" max="10" bind:value={settings.gridCols} />
 		</div>
 		<button
 			class="border border-pink-500 px-4 py-2 text-pink-500 transition-colors active:bg-pink-500 active:text-black lg:hover:bg-pink-500 lg:hover:text-black"
@@ -89,24 +83,18 @@
 	<div class="flex w-full flex-row gap-1">
 		<button
 			class="border border-pink-500 px-4 py-2 text-pink-500 transition-colors active:bg-pink-500 active:text-black lg:hover:bg-pink-500 lg:hover:text-black"
-			onclick={() => settings.xMargin = dec(settings.xMargin)}
+			onclick={() => (settings.xMargin = dec(settings.xMargin))}
 		>
 			<ChevronLeft />
 		</button>
-		<div class="flex flex-col w-full h-full">
+		<div class="flex h-full w-full flex-col">
 			<input
-				class="w-full border border-slate-500 bg-slate-500 bg-opacity-45 p-1 text-white text-center"
+				class="w-full border border-slate-500 bg-slate-500 bg-opacity-45 p-1 text-center text-white"
 				type="number"
 				id="xMargin"
 				bind:value={settings.xMargin}
 			/>
-			<input
-				class="w-full"
-				type="range"
-				min="0"
-				max="100"
-				bind:value={settings.xMargin}
-			/>
+			<input class="w-full" type="range" min="0" max="100" bind:value={settings.xMargin} />
 		</div>
 		<button
 			class="border border-pink-500 px-4 py-2 text-pink-500 transition-colors active:bg-pink-500 active:text-black lg:hover:bg-pink-500 lg:hover:text-black"
@@ -122,24 +110,18 @@
 	<div class="flex w-full flex-row gap-1">
 		<button
 			class="border border-pink-500 px-4 py-2 text-pink-500 transition-colors active:bg-pink-500 active:text-black lg:hover:bg-pink-500 lg:hover:text-black"
-			onclick={() => settings.yMargin = dec(settings.yMargin)}
+			onclick={() => (settings.yMargin = dec(settings.yMargin))}
 		>
 			<ChevronLeft />
 		</button>
-		<div class="flex flex-col w-full h-full">
+		<div class="flex h-full w-full flex-col">
 			<input
-				class="w-full border border-slate-500 bg-slate-500 bg-opacity-45 p-1 text-white text-center"
+				class="w-full border border-slate-500 bg-slate-500 bg-opacity-45 p-1 text-center text-white"
 				type="number"
 				id="yMargin"
 				bind:value={settings.yMargin}
 			/>
-			<input
-				class="w-full"
-				type="range"
-				min="0"
-				max="100"
-				bind:value={settings.yMargin}
-			/>
+			<input class="w-full" type="range" min="0" max="100" bind:value={settings.yMargin} />
 		</div>
 		<button
 			class="border border-pink-500 px-4 py-2 text-pink-500 transition-colors active:bg-pink-500 active:text-black lg:hover:bg-pink-500 lg:hover:text-black"
