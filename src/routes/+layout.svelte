@@ -68,40 +68,38 @@
 </Modal>
 
 <div class="flex h-full flex-col">
-	<nav class=" bg-black p-2 text-white">
-		<div class="flex flex-row">
-			<Button onclick={() => goto("/")}>
-				<House />
-				<span class="hidden md:block">Home</span>
-			</Button>
-			<form
-				class="flex w-full flex-row items-center"
-				onsubmit={(e) => {
-					e.preventDefault();
+	<nav class="flex flex-row bg-black p-2 text-white">
+		<a
+			href="/"
+			class="flex px-5 py-2 flex-col items-center justify-center transition-colors active:bg-slate-500 lg:hover:bg-slate-500"
+		>
+			<House />
+		</a>
+		<form
+			class="flex w-full flex-row items-center"
+			onsubmit={(e) => {
+				e.preventDefault();
 
-					if (/^\d+$/.test(searchTerm)) {
-						goto(`/read?id=${searchTerm}`);
-					} else if (searchTerm.length > 0) {
-						goto(`/search?q=${searchTerm}`);
-					}
-				}}
-			>
-				<input
-					class="h-full w-full bg-slate-900 px-4 py-2 md:text-lg lg:text-xl"
-					type="search"
-					placeholder="Search or code here"
-					bind:value={searchTerm}
-				/>
-				<Button class="h-full" type="submit">
-					<Search />
-					<span class="hidden md:block">Search</span>
-				</Button>
-			</form>
-			<Button class="h-full" onclick={() => (showModal = true)}>
-				<Cog />
-				<span class="hidden md:block">Settings</span>
+				if (/^\d+$/.test(searchTerm)) {
+					goto(`/read?id=${searchTerm}`);
+				} else if (searchTerm.length > 0) {
+					goto(`/search?q=${searchTerm}`);
+				}
+			}}
+		>
+			<input
+				class="h-full w-full bg-slate-900 px-4 py-2 md:text-lg lg:text-xl"
+				type="search"
+				placeholder="Search or code here"
+				bind:value={searchTerm}
+			/>
+			<Button class="h-full" type="submit">
+				<Search />
 			</Button>
-		</div>
+		</form>
+		<Button class="h-full" onclick={() => (showModal = true)}>
+			<Cog />
+		</Button>
 	</nav>
 
 	<div class="h-full lg:p-2">
