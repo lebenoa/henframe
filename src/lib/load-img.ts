@@ -1,5 +1,5 @@
-// Currently unused. 
-// This used to replace spinners with images but somehow it didn't work. 
+// Currently unused.
+// This used to replace spinners with images but somehow it didn't work.
 // Neither with `img.complete` or `img.addEventListener("load", onLoad)`.
 // It did load image but didn't replace the spinner `node` for some reason.
 // That's left use with `setTimeout` but it didn't solve the problem I was trying to solve.
