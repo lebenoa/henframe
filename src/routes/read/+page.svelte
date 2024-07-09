@@ -11,8 +11,10 @@
 	import { settings } from "$lib/stores/settings.svelte";
 	import Tag from "$lib/components/Tag.svelte";
 	import ErrorDisplay from "$lib/components/ErrorDisplay.svelte";
+	import { trackThisImage } from "$lib/page-track";
 
 	let id = $state("");
+	let pageState: number = parseInt(new URL(window.location.href).searchParams.get("page") ?? "0");
 
 	$effect(() => {
 		id = $page.url.searchParams.get("id") || "";
@@ -64,7 +66,7 @@
 		{/if}
 	</div>
 	<div class="flex w-full flex-col justify-center">
-		{#each data.data.images.pages as res}
+		{#each data.data.images.pages as res, idx}
 			<img
 				class="bg-cyan-800"
 				alt={res.link}
@@ -72,6 +74,8 @@
 				style="margin: {settings.yMargin}rem {settings.xMargin}rem"
 				referrerpolicy="same-origin"
 				loading="lazy"
+				use:trackThisImage={{ pageNumber: idx, queryNumber: pageState }}
+				page-number={idx}
 				onerror={(e) => {
 					const node = e.target as HTMLImageElement;
 					const retryButton = document.createElement("button");
