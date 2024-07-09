@@ -1,9 +1,14 @@
 <script lang="ts">
+	import { replaceState } from "$app/navigation";
+	import { page } from "$app/stores";
 	import type { Nhql } from "$lib/nhql/types";
+	import { scrollIf } from "$lib/scroll-if";
 
-	// This is way easier than svelte 5 with typescript enabled. Cleaner, Simpler, Easier.
-	// Though might be deprecated in the future
-	export let info: Nhql;
+	type Props = {
+		info: Nhql;
+	};
+
+	let { info }: Props = $props();
 
 	let hasArtists = info.metadata.artists.length > 0;
 </script>
@@ -11,6 +16,12 @@
 <a
 	href="/read?id={info.id}"
 	class="flex w-full flex-col border border-slate-500 !bg-opacity-50 transition-colors active:bg-slate-500 lg:hover:bg-slate-500"
+	onclick={() => {
+		replaceState("", {
+			id: info.id
+		});
+	}}
+	use:scrollIf={info.id == $page.state.id}
 >
 	<!-- svelte-ignore a11y_missing_attribute -->
 	<img

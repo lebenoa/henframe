@@ -3,18 +3,23 @@ import { replaceState } from "$app/navigation";
 function setQuery(param: string, value: string) {
 	let url = new URL(window.location.href);
 	url.searchParams.set(param, value);
-    // @ts-ignore
+	// @ts-ignore
 	replaceState(url.href, {});
 }
 
-const observer = new IntersectionObserver((entries) => {
-	if (entries[0].isIntersecting) {
-		const pageNumber = entries[0].target.getAttribute("page-number");
-		if (!pageNumber) return;
+const observer = new IntersectionObserver(
+	(entries) => {
+		if (entries[0].isIntersecting) {
+			const pageNumber = entries[0].target.getAttribute("page-number");
+			if (!pageNumber) return;
 
-		setQuery("page", pageNumber);
+			setQuery("page", pageNumber);
+		}
+	},
+	{
+		threshold: 0.25
 	}
-});
+);
 
 function scrollThis(node: HTMLImageElement) {
 	setTimeout(() => {
