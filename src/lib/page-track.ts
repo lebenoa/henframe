@@ -3,6 +3,7 @@ import { replaceState } from "$app/navigation";
 function setQuery(param: string, value: string) {
 	let url = new URL(window.location.href);
 	url.searchParams.set(param, value);
+    // @ts-ignore
 	replaceState(url.href, {});
 }
 
@@ -27,8 +28,7 @@ type TrackArgs = {
 };
 
 export function trackThisImage(node: HTMLImageElement, args: TrackArgs) {
-	if (args.pageNumber === 0) return;
-	else if (args.pageNumber == args.queryNumber) {
+	if (args.pageNumber == args.queryNumber) {
 		scrollThis(node);
 
 		node.addEventListener("load", () => {
