@@ -7,24 +7,27 @@ function setQuery(param: string, value: string) {
 	replaceState(url.href, {});
 }
 
-const observer = new IntersectionObserver(
-	(entries) => {
-		if (entries[0].isIntersecting) {
-			const pageNumber = entries[0].target.getAttribute("page-number");
-			if (!pageNumber) return;
+const observer = new IntersectionObserver((entries) => {
+	if (entries[0].isIntersecting) {
+		const pageNumber = entries[0].target.getAttribute("page-number");
+		if (!pageNumber) return;
 
-			setQuery("page", pageNumber);
-		}
-	},
-	{
-		threshold: 0.25
+		setQuery("page", pageNumber);
 	}
-);
+});
 
 function scrollThis(node: HTMLImageElement) {
 	setTimeout(() => {
 		node.scrollIntoView({ behavior: "smooth", block: "start" });
 	}, 100);
+}
+
+function handleLoadEvent(e: Event) {
+	const target = e.target as HTMLImageElement;
+
+	scrollThis(target);
+
+	target.removeEventListener("load", handleLoadEvent);
 }
 
 type TrackArgs = {
@@ -34,11 +37,11 @@ type TrackArgs = {
 
 export function trackThisImage(node: HTMLImageElement, args: TrackArgs) {
 	if (args.pageNumber == args.queryNumber) {
-		scrollThis(node);
-
-		node.addEventListener("load", () => {
+		if (node.complete) {
 			scrollThis(node);
-		});
+		} else {
+			node.addEventListener("load", handleLoadEvent);
+		}
 	}
 
 	observer.observe(node);

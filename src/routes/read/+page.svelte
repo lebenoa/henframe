@@ -72,7 +72,7 @@
 				src={res.link}
 				style="margin: {settings.yMargin}rem {settings.xMargin}rem"
 				referrerpolicy="same-origin"
-				loading="lazy"
+				loading={idx < 3 ? "eager" : "lazy"}
 				use:trackThisImage={{ pageNumber: idx, queryNumber: pageState }}
 				page-number={idx}
 				onerror={(e) => {
