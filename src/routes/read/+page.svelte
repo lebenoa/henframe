@@ -1,6 +1,5 @@
 <script lang="ts">
 	import SpinnerContainer from "$lib/components/SpinnerContainer.svelte";
-	import Spinner from "$lib/icons/Spinner.svelte";
 
 	import { getByID } from "$lib/nhql/api";
 	import type { Nhresponse } from "$lib/nhql/types";
