@@ -76,31 +76,7 @@
 				use:trackThisImage={{ pageNumber: idx, queryNumber: pageState }}
 				page-number={idx}
 				onerror={(e) => {
-					const node = e.target as HTMLImageElement;
-					const retryButton = document.createElement("button");
-
-					retryButton.innerText = "Retry Image";
-					retryButton.className =
-						"border border-red-500 w-full p-4 my-1 transition-colors active:bg-red-500 lg:hover:bg-red-500";
-
-					retryButton.addEventListener("click", () => {
-						const newImg = document.createElement("img");
-
-						for (const attr of node.attributes) {
-							if (attr.name === "src") {
-								newImg.setAttribute(
-									attr.name,
-									attr.value + "?t=" + new Date().getTime()
-								);
-							} else {
-								newImg.setAttribute(attr.name, attr.value);
-							}
-						}
-
-						retryButton.replaceWith(newImg);
-					});
-
-					node.replaceWith(retryButton);
+					(e.target as HTMLImageElement).setAttribute("data-load-error", "true");
 				}}
 			/>
 			<!-- {@html `<img

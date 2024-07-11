@@ -8,8 +8,18 @@ function setQuery(param: string, value: string) {
 }
 
 const observer = new IntersectionObserver((entries) => {
-	if (entries[0].isIntersecting) {
-		const pageNumber = entries[0].target.getAttribute("page-number");
+	const entry = entries[0];
+	if (entry.isIntersecting) {
+		const target = entry.target as HTMLImageElement;
+
+		const isLoadError = target.getAttribute("data-load-error");
+		if (isLoadError) {
+			target.src = target.src + "?t" + Date.now();
+			target.removeAttribute("data-load-error");
+			return;
+		}
+
+		const pageNumber = target.getAttribute("page-number");
 		if (!pageNumber) return;
 
 		setQuery("page", pageNumber);
