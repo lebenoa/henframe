@@ -7,6 +7,6 @@ export function scrollIf(node: Element, cond: boolean) {
                 behavior: "smooth",
                 block: "center"
             });
-        }, 200);
+        }, 100);
     }
 }

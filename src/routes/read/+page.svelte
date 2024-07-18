@@ -11,6 +11,7 @@
 	import Tag from "$lib/components/Tag.svelte";
 	import ErrorDisplay from "$lib/components/ErrorDisplay.svelte";
 	import { trackThisImage } from "$lib/page-track";
+	import { replaceState } from "$app/navigation";
 
 	let id = $state("");
 	let pageState: number = parseInt(new URL(window.location.href).searchParams.get("page") ?? "0");
@@ -29,8 +30,6 @@
 
 		return response.data.nhql.by;
 	}
-
-	let showInfo = $state(false);
 </script>
 
 {#await fetchData()}
@@ -39,11 +38,16 @@
 	<div class="flex flex-col">
 		<button
 			class="border border-cyan-500 p-2 transition-colors active:bg-cyan-500 lg:hover:bg-cyan-500"
-			onclick={() => (showInfo = !showInfo)}
+			onclick={() => {
+				replaceState("", {
+					...$page.state,
+					showInfo: !$page.state.showInfo
+				});
+			}}
 		>
-			{showInfo ? "Hide" : "Show"} Info
+			{$page.state.showInfo ? "Hide" : "Show"} Info
 		</button>
-		{#if showInfo}
+		{#if $page.state.showInfo}
 			<div
 				class="flex flex-col items-center justify-center px-10"
 				transition:fly={{ x: -300, duration: 200 }}

@@ -160,7 +160,7 @@
 			}}
 		>
 			<input
-				class="h-full w-full bg-slate-900 px-4 py-2 rounded-none md:text-lg lg:text-xl"
+				class="h-full w-full rounded-none bg-slate-900 px-4 py-2 md:text-lg lg:text-xl"
 				type="search"
 				placeholder="Search or code here"
 				bind:value={searchTerm}
