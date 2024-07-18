@@ -1,10 +1,12 @@
 type Args = {
     cond: boolean;
-    onResolve: Promise<void>;
+    onResolve?: Promise<void>;
 }
 
 export async function scrollIf(node: Element, args: Args) {
-    await args.onResolve;
+    if (args.onResolve) {
+        await args.onResolve;
+    }
 
     if (args.cond) {
         // Wait for other node to render otherwise this will not work!
