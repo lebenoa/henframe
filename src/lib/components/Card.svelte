@@ -3,7 +3,6 @@
 	import { page } from "$app/stores";
 	import type { Nhql } from "$lib/nhql/types";
 	import { scrollIf } from "$lib/scroll-if";
-	import { onMount } from "svelte";
 
 	type Props = {
 		info: Nhql;
@@ -12,11 +11,6 @@
 	let { info }: Props = $props();
 
 	let hasArtists = info.metadata.artists.length > 0;
-	let promise: Promise<void> = new Promise((resolve) => {
-		onMount(() => {
-			resolve();
-		});
-	});
 </script>
 
 <a
@@ -27,7 +21,7 @@
 			id: info.id
 		});
 	}}
-	use:scrollIf={{ cond: info.id == $page.state.id, onResolve: promise }}
+	use:scrollIf={info.id == $page.state.id}
 >
 	<!-- svelte-ignore a11y_missing_attribute -->
 	<img
