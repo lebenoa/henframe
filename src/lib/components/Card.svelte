@@ -34,6 +34,9 @@
 		alt={info.title.display}
 		referrerpolicy="same-origin"
 		loading="lazy"
+		onload={(e) => {
+			(e.target as HTMLImageElement).style.minHeight = "auto";
+		}}
 	/>
 	<div class="w-full px-2 py-1 text-center">
 		<p>{info.title.display}</p>
