@@ -7,6 +7,15 @@ function setQuery(param: string, value: string) {
 	replaceState(url.href, {});
 }
 
+function handleOnReload(e: Event) {
+	const target = e.target as HTMLImageElement;
+	const pageNumber = target.getAttribute("page-number");
+	if (!pageNumber) return;
+
+	setQuery("page", pageNumber);
+	target.removeEventListener("load", handleOnReload);
+}
+
 const observer = new IntersectionObserver((entries) => {
 	const entry = entries[0];
 	if (entry.isIntersecting) {
@@ -16,6 +25,7 @@ const observer = new IntersectionObserver((entries) => {
 		if (isLoadError) {
 			target.src = target.src + "?t" + Date.now();
 			target.removeAttribute("data-load-error");
+			target.addEventListener("load", handleOnReload);
 			return;
 		}
 
