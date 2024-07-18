@@ -154,6 +154,11 @@
 
 				if (/^\d+$/.test(searchTerm)) {
 					goto(`/read?id=${searchTerm}`);
+				} else if (searchTerm.startsWith("#")) {
+					let trimmed = searchTerm.slice(1);
+					if (/^\d+$/.test(trimmed)) {
+						goto(`/read?id=${trimmed}`);
+					}
 				} else if (searchTerm.length > 0) {
 					goto(`/search?q=${searchTerm}`);
 				}
