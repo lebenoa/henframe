@@ -80,6 +80,9 @@
 				loading={idx < (pageState > 2 ? pageState : 3) ? "eager" : "lazy"}
 				use:trackThisImage={{ pageNumber: idx, queryNumber: pageState }}
 				page-number={idx}
+				onload={(e) => {
+					(e.target as HTMLImageElement).style.minHeight = "auto";
+				}}
 				onerror={(e) => {
 					(e.target as HTMLImageElement).setAttribute("data-load-error", "true");
 				}}
