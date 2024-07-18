@@ -16,7 +16,6 @@
 <a
 	href="/read?id={info.id}"
 	class="flex w-full flex-col border border-slate-500 !bg-opacity-50 transition-colors active:bg-slate-500 lg:hover:bg-slate-500"
-	style={info.images.cover.info.height ? `min-height: ${info.images.cover.info.height}` : ""}
 	onclick={() => {
 		replaceState("", {
 			...$page.state,
@@ -28,6 +27,9 @@
 	<!-- svelte-ignore a11y_missing_attribute -->
 	<img
 		class="my-auto bg-cyan-800"
+		style={info.images.cover.info.height
+			? `min-height: ${info.images.cover.info.height}px`
+			: ""}
 		src={info.images.cover.link}
 		alt={info.title.display}
 		referrerpolicy="same-origin"
