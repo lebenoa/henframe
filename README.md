@@ -33,29 +33,32 @@ And what's more is that search is **KIND OF** harder to use compare to the [`nhe
 
 That's mainly why I have done this
 
--   English **ONLY** by default; Might implement something to disable this _AS AN OPTION_ in the future.
--   Search by tag(or at least I think so), seperated by comma (`,`); Like how you would prompt SD Anime Model.
-    > `milf, full color` will search for `milf`, `full color` and `english`
+- English **ONLY** by default; Use `-english` to bypass
+- Search by tag(or at least I think so), separate by comma (`,`); Like how you would prompt SD Anime Model.
+    > **Default Behavior** **_TIPS_**: Search for tags with last character remove to get latest data.  
+    > `milf, full color` will search for `milf`, `full color` and `englis`
     >
-    > **_TIPS_**: Search for tags with last character remove to get latest data.  
-    > For example, instead of `schoolgirl uniform`, you should do `schoolgirl unifor`
+    > If you want other languages too: `milf, full color, -english`  
+    > Do be warn tho this will use 1+ year(s) ago cache from the API
+    > 
+    > `milf, full colo, -english` should pull latest data from the API
 
 # Get it up and running
 
 ## Requirement
 
--   `node` - built with `v20.3.1`
--   `pnpm` - built with `8.6.5`
+- latest `bun`
 
 ---
 
 1. Clone this repository. Extract it to somewhere
-1. Navigate to root folder (where `package.json` located)
-1. Open a terminal and run `pnpm i`
-1. Run `pnpm dev` to run in dev mode. Check out [SvelteKit guide to deploy to production](https://kit.svelte.dev/docs/adapters).
+1. Navigate to root folder (where `package.json` is located)
+1. Open a terminal and run `bun i`
+1. Run `bun dev --host` to run in dev mode.
+1. Run `bun run build` to compile stuff to static website (HTML, CSS, JavaScript) and use any web server to serve stuff in `build` folder
 
 # Issues
 
--   [ ❌ ] Data kinda buggy if page >= 41
+- [ ❌ ] Data kinda buggy if page >= 41
 
     > This is the [API](https://api.hifumin.app) fault and not mine.
