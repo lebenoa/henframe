@@ -74,7 +74,8 @@
 				class="bg-cyan-800"
 				alt={res.link}
 				src={res.link}
-				style="aspect-ratio: {res.info.width} / {res.info.height};"
+				style="aspect-ratio: {res.info.width} / {res.info.height};
+                    margin: {settings.yMargin}rem {settings.xMargin}rem"
 				referrerpolicy="same-origin"
 				loading={idx < (pageState > 2 ? pageState : 3) ? "eager" : "lazy"}
 				use:trackThisImage={{ pageNumber: idx, queryNumber: pageState }}

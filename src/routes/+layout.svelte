@@ -29,9 +29,13 @@
 		}
 	});
 
+	function inc(x: number) {
+		return x + 0.5;
+	}
+
 	function dec(x: number) {
-		if (x <= 0) return 0;
-		return x - 1;
+		if (x <= 0.5) return 0;
+		return x - 0.5;
 	}
 </script>
 
@@ -55,7 +59,13 @@
 	<div class="flex w-full flex-row gap-1">
 		<button
 			class="border border-pink-500 px-4 py-2 text-pink-500 transition-colors active:bg-pink-500 active:text-black lg:hover:bg-pink-500 lg:hover:text-black"
-			onclick={() => (settings.gridCols = dec(settings.gridCols))}
+			onclick={() => {
+				if (settings.gridCols < 1) {
+					settings.gridCols = 0;
+				} else {
+					settings.gridCols -= 1;
+				}
+			}}
 		>
 			<ChevronLeft />
 		</button>
@@ -92,13 +102,21 @@
 				class="w-full border border-slate-500 bg-slate-500 bg-opacity-45 p-1 text-center text-white"
 				type="number"
 				id="xMargin"
+				step="0.5"
 				bind:value={settings.xMargin}
 			/>
-			<input class="w-full" type="range" min="0" max="100" bind:value={settings.xMargin} />
+			<input
+				class="w-full"
+				type="range"
+				step="0.5"
+				min="0"
+				max="100"
+				bind:value={settings.xMargin}
+			/>
 		</div>
 		<button
 			class="border border-pink-500 px-4 py-2 text-pink-500 transition-colors active:bg-pink-500 active:text-black lg:hover:bg-pink-500 lg:hover:text-black"
-			onclick={() => (settings.xMargin += 1)}
+			onclick={() => (settings.xMargin = inc(settings.xMargin))}
 		>
 			<ChevronRight />
 		</button>
@@ -121,11 +139,18 @@
 				id="yMargin"
 				bind:value={settings.yMargin}
 			/>
-			<input class="w-full" type="range" min="0" max="100" bind:value={settings.yMargin} />
+			<input
+				class="w-full"
+				type="range"
+				step="0.5"
+				min="0"
+				max="100"
+				bind:value={settings.yMargin}
+			/>
 		</div>
 		<button
 			class="border border-pink-500 px-4 py-2 text-pink-500 transition-colors active:bg-pink-500 active:text-black lg:hover:bg-pink-500 lg:hover:text-black"
-			onclick={() => (settings.yMargin += 1)}
+			onclick={() => (settings.yMargin = inc(settings.yMargin))}
 		>
 			<ChevronRight />
 		</button>
