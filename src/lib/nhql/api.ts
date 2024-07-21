@@ -36,6 +36,7 @@ export async function getByID(
 								pages {
 									link
                                     info {
+                                        width
                                         height
                                     }
 								}
@@ -84,6 +85,7 @@ export async function search(
 								cover {
 									link
                                     info {
+                                        width
                                         height
                                     }
 								}

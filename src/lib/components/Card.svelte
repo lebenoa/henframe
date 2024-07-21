@@ -27,15 +27,13 @@
 	<!-- svelte-ignore a11y_missing_attribute -->
 	<img
 		class="my-auto bg-cyan-800"
-		style={info.images.cover.info.height
-			? `min-height: ${info.images.cover.info.height}px`
-			: ""}
+		style="aspect-ratio: {info.images.cover.info.width} / {info.images.cover.info.height};"
 		src={info.images.cover.link}
 		alt={info.title.display}
 		referrerpolicy="same-origin"
 		loading="lazy"
 		onload={(e) => {
-			(e.target as HTMLImageElement).style.minHeight = "auto";
+			// (e.target as HTMLImageElement).style.minHeight = "auto";
 		}}
 	/>
 	<div class="w-full px-2 py-1 text-center">
