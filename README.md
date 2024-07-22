@@ -33,21 +33,21 @@ And what's more is that search is **KIND OF** harder to use compare to the [`nhe
 
 That's mainly why I have done this
 
-- English **ONLY** by default; Use `-english` to bypass
-- Search by tag(or at least I think so), separate by comma (`,`); Like how you would prompt SD Anime Model.
+-   English **ONLY** by default; Use `-english` to bypass
+-   Search by tag(or at least I think so), separate by comma (`,`); Like how you would prompt SD Anime Model.
     > **Default Behavior** **_TIPS_**: Search for tags with last character remove to get latest data.  
     > `milf, full color` will search for `milf`, `full color` and `englis`
     >
     > If you want other languages too: `milf, full color, -english`  
     > Do be warn tho this will use 1+ year(s) ago cache from the API
-    > 
+    >
     > `milf, full colo, -english` should pull latest data from the API
 
 # Get it up and running
 
 ## Requirement
 
-- latest `bun`
+-   latest `bun`
 
 ---
 
@@ -59,6 +59,6 @@ That's mainly why I have done this
 
 # Issues
 
-- [ ❌ ] Data kinda buggy if page >= 41
+-   [ ❌ ] Data kinda buggy if page >= 41
 
     > This is the [API](https://api.hifumin.app) fault and not mine.
