@@ -38,7 +38,7 @@
 			let trimmed = q.trim();
 			if (trimmed === "english") {
 				terms = [q];
-			} else {
+			} else if (trimmed !== "englis") {
 				terms.push(trimmed);
 			}
 		}
